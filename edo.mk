@@ -133,7 +133,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.soundtrigger@2.3-impl \
     tinyplay \
-    tinymix \
     audio_amplifier.kona
 
 PRODUCT_PACKAGES += \
