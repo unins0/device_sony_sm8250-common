@@ -55,4 +55,4 @@ odm                                                     /odm                   e
 /dev/block/bootdevice/by-name/mdm1m9kefs2               /modem_fs2             emmc    defaults                                             defaults
 
 # ZRAM
-/dev/block/zram0                                        none                   swap    defaults                                             zramsize=1073741824,max_comp_streams=8
+/dev/block/zram0                                        none                   swap    defaults                                             zramsize=2147483648,max_comp_streams=8
