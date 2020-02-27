@@ -64,6 +64,7 @@ BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_CMDLINE := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
+    androidboot.init_fatal_reboot_target=recovery \
     androidboot.usbcontroller=a600000.dwc3 \
     buildid=EDO-1.0.1-201109-1152 \
     cgroup.memory=nokmem,nosocket \
