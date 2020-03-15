@@ -32,6 +32,11 @@ bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
         case Mode::DOUBLE_TAP_TO_WAKE:
             *_aidl_return = true;
             return true;
+            break;
+        case Mode::LOW_POWER:
+            *_aidl_return = true;
+            return true;
+            break;
         default:
             return false;
     }
