@@ -460,12 +460,16 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal \
     libsensorndkbridge
 
+# Soong NameSpaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     $(DEVICE_PATH) \
     hardware/sony \
     hardware/google/pixel \
     hardware/google/interfaces
+
+# Storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Shim
 PRODUCT_PACKAGES += \
