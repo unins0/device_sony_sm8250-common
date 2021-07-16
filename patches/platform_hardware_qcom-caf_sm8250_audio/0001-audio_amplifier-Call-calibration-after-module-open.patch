@@ -1,0 +1,38 @@
+From a7fd38cf86bcd81505751fd5a8c4786ba78da43d Mon Sep 17 00:00:00 2001
+From: Luofan Chen <clfbbn@gmail.com>
+Date: Wed, 17 Aug 2022 16:14:02 +0800
+Subject: [PATCH 1/2] audio_amplifier: Call calibration after module open
+
+If the audio_amplifier HAL has the amplifier calibration function
+defined, call this to allow the HAL calibrate the amplifier right
+after opening the module.
+
+Signed-off-by: Luofan Chen <clfbbn@gmail.com>
+Depends-On: I9d497fb5d9716bbcbc6ef9035205ee18da994e72
+Change-Id: Ie8fbbb855865b41dafb9f289aaed377bdfe9ffe7
+(cherry picked from commit eabebaa441f6a356f85e2bb56fb62ad817c4ce52)
+---
+ hal/audio_extn/audio_amplifier.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/hal/audio_extn/audio_amplifier.c b/hal/audio_extn/audio_amplifier.c
+index 043c10f..2494ed3 100644
+--- a/hal/audio_extn/audio_amplifier.c
++++ b/hal/audio_extn/audio_amplifier.c
+@@ -50,6 +50,13 @@ int amplifier_open(void* adev) {
+         return -ENODEV;
+     }
+ 
++    if (amp.hw->calibrate) {
++        rc = amp.hw->calibrate(adev);
++        if (rc) {
++            ALOGV("%s: Failed to do amplifier hardware calibration %s\n", __func__, strerror(-rc));
++        }
++    }
++
+     return 0;
+ }
+ 
+-- 
+2.34.1
+

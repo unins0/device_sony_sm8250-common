@@ -1,0 +1,27 @@
+From 9204e63ccc07486ab3998df1bec03c1e066264b9 Mon Sep 17 00:00:00 2001
+From: Han Sol Jin <hansol@hansol.ca>
+Date: Mon, 22 Apr 2024 08:55:25 -0700
+Subject: [PATCH 2/2] audio_amplifier: pass amplifier_device pointer to
+ calibrate as well
+
+Change-Id: I4b65e0f12aa01fae573658f1b5b58a54471826a8
+---
+ hal/audio_extn/audio_amplifier.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hal/audio_extn/audio_amplifier.c b/hal/audio_extn/audio_amplifier.c
+index 2494ed3..87f660c 100644
+--- a/hal/audio_extn/audio_amplifier.c
++++ b/hal/audio_extn/audio_amplifier.c
+@@ -51,7 +51,7 @@ int amplifier_open(void* adev) {
+     }
+ 
+     if (amp.hw->calibrate) {
+-        rc = amp.hw->calibrate(adev);
++        rc = amp.hw->calibrate(amp.hw, amp.adev);
+         if (rc) {
+             ALOGV("%s: Failed to do amplifier hardware calibration %s\n", __func__, strerror(-rc));
+         }
+-- 
+2.34.1
+

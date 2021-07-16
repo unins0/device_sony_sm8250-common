@@ -489,6 +489,9 @@ PRODUCT_PACKAGES += \
     com.sony.device \
     com.sony.idd_dummy
 
+# Storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
