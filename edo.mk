@@ -248,6 +248,11 @@ $(call inherit-product-if-exists, vendor/sony/extra/extra.mk)
 PRODUCT_PACKAGES += \
     fastbootd
 
+# FM
+PRODUCT_PACKAGES += \
+    FM2 \
+    qcom.fmradio
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
