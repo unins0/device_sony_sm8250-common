@@ -441,5 +441,4 @@ $(call inherit-product-if-exists, hardware/sony/XperiaModules.mk)
 # Keys for signing
 -include vendor/ahnet-priv/keys/keys.mk
 
-PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
