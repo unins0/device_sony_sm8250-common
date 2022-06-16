@@ -21,3 +21,6 @@ type sysfs_dp, fs_type, sysfs_type;
 type vendor_sysfs_smb_device, fs_type, sysfs_type;
 
 type vendor_sysfs_msm_subsys, fs_type, sysfs_type;
+
+# KProfiles
+type sysfs_kprofiles, sysfs_type, fs_type;

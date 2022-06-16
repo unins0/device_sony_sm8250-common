@@ -26,3 +26,6 @@ allow init keyprovd_exec:file { read getattr map execute open };
 allow init vendor_hal_soter_qti_exec:file { read getattr map execute open };
 
 allow init vendor_hal_soter_qti:process { transition siginh rlimitinh };
+
+# Allow init to set attribute to sysfs_kprofiles
+allow init sysfs_kprofiles:file { setattr };
