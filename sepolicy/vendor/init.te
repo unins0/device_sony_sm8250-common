@@ -19,3 +19,6 @@ allow init tad_socket:sock_file { write };
 allow init tad:unix_stream_socket { connectto };
 
 allow init keyprovd_exec:file { read getattr map execute open };
+
+# Allow init to set attribute to sysfs_kprofiles
+allow init sysfs_kprofiles:file { setattr };
