@@ -44,6 +44,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
+    DisplayFeaturesResCommon \
     CarrierConfigResCommon \
     NcmTetheringOverlay \
     OpenDeltaResCommon \
@@ -239,6 +240,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.composer-service
 
 $(call soong_config_set,qtidisplay,target_no_raw10_custom_format,true)
+
+# DisplayFeatures
+PRODUCT_PACKAGES += \
+    DisplayFeatures
 
 # DRM
 PRODUCT_PACKAGES += \
