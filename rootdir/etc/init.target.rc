@@ -93,6 +93,10 @@ on boot
     setprop vendor.usb.controller a600000.dwc3
     setprop persist.vendor.mdm_helper.fail_action cold_reset,s3_reset,panic
 
+    # Allow system to manipulate FPS Counter nodes
+    chown system graphics /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps
+    chmod 0660 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps
+
     # KCal
     chown system system /sys/module/msm_drm/parameters/kcal_cont
     chown system system /sys/module/msm_drm/parameters/kcal_hue

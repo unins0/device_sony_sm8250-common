@@ -41,6 +41,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
+    DisplayFeaturesResCommon \
     CarrierConfigResCommon \
     NcmTetheringOverlay \
     OpenDeltaResCommon \
@@ -230,6 +231,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
 
 $(call soong_config_set,EGL,USE_DISPLAY_ARRAY,true)
+
+# DisplayFeatures
+PRODUCT_PACKAGES += \
+    DisplayFeatures
 
 # DRM
 PRODUCT_PACKAGES += \
