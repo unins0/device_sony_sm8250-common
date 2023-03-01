@@ -9,6 +9,10 @@ service sony_sh /vendor/bin/init.sony.sh
     group root
     oneshot
 
+on boot
+    # Enable smart charging
+    write /sys/class/power_supply/battery_ext/smart_charging_activation 1
+
 on post-fs
     # radio
     exec_start sony_sh

@@ -44,3 +44,10 @@ prebuilt_etc {
     src: "ueventd.edo.rc",
     vendor: true,
 }
+
+prebuilt_etc {
+    name: "ueventd.sony.rc",
+    filename: "ueventd.rc",
+    src: "ueventd.sony.rc",
+    device_specific: true,
+}

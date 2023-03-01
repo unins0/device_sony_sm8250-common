@@ -138,7 +138,8 @@ PRODUCT_PACKAGES += \
     init.sony-platform.rc \
     init.sony.rc \
     init.sony.sh \
-    ueventd.edo.rc
+    ueventd.edo.rc \
+    ueventd.sony.rc
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -166,6 +167,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light-V1-ndk_platform.vendor \
     android.hardware.lights-service-sony
+
+# Lineage Health
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
 
 # Media
 PRODUCT_PACKAGES += \
