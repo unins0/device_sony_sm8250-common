@@ -453,6 +453,10 @@ PRODUCT_PACKAGES += \
 # QTI Components
 TARGET_BOARD_PLATFORM := kona
 
+# Remove Packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
