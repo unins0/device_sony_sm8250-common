@@ -14,6 +14,12 @@ type hal_idd_hwservice, hwservice_manager_type;
 # miscta
 type hal_miscta_hwservice, hwservice_manager_type;
 
+# NFC
+type hal_nxpnfc_hwservice, hwservice_manager_type;
+type hal_nxpese_hwservice, hwservice_manager_type;
+type nxpnfc_hwservice, hwservice_manager_type;
+type nxpese_hwservice, hwservice_manager_type;
+
 # ril
 type somc_hw_radio_hwservice, hwservice_manager_type;
 
