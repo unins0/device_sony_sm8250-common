@@ -142,6 +142,7 @@ PRODUCT_PACKAGES += \
     audio_amplifier.kona
 
 PRODUCT_PACKAGES += \
+    libldacBT_bco \
     audio.bluetooth.default \
     audio.primary.kona \
     audio.r_submix.default \
