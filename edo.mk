@@ -562,16 +562,12 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
 
-# Xperia Modules
-$(call inherit-product, hardware/sony/XperiaModules.mk)
-
 # Xperia Modules - Flags
 TARGET_SUPPORTS_CREATOR_MODE := true
 TARGET_SUPPORTS_SOUND_ENHANCEMENT_DTS := false
 TARGET_SUPPORTS_EUICC := false
 
-# Extras
-$(call inherit-product, vendor/sony/extra/extra.mk)
+# Extras - Flags
 TARGET_SHIPS_SONY_CAMERA := true
 TARGET_SHIPS_SONY_APPS := true
 TARGET_SUPPORTS_GAME_CONTROLLERS := true
@@ -579,6 +575,12 @@ TARGET_SUPPORTS_GAME_CONTROLLERS := true
 # Extras and XperiaModules Combined
 TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
 TARGET_SHIPS_SOUND_ENHANCEMENT := true
+
+# Xperia Modules
+$(call inherit-product, hardware/sony/XperiaModules.mk)
+
+# Extras
+$(call inherit-product, vendor/sony/extra/extra.mk)
 
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
