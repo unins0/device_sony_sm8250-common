@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-service msim_sh /odm/bin/init.qcom.msim.sh
+service sony_sh /odm/bin/init.sony.sh
     user root
     group root
     oneshot
@@ -15,7 +15,7 @@ on boot
 
 on post-fs
     # radio
-    exec_start msim_sh
+    exec_start sony_sh
     setprop persist.radio.multisim.config ${vendor.radio.multisim.config}
     setprop ro.vendor.ltalabel.model ${vendor.radio.ltalabel.model}
 
