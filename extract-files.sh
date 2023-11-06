@@ -75,6 +75,9 @@ function blob_fixup() {
             "${PATCHELF}" --replace-needed "libbinder.so" "libbinder-v32.so" "${2}"
         fi
         ;;
+    vendor/bin/sensors.qti | vendor/lib*/libwvhidl.so | vendor/lib*/mediadrm/libwvdrmengine.so | vendor/lib*/sensors.ssc.so | vendor/lib64/libsensorcal.so | vendor/lib64/libsnsapi.so | vendor/lib64/libsnsdiaglog.so | vendor/lib64/libssc.so)
+        "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite-3.9.1.so" "libprotobuf-cpp-full-3.9.1.so" "${2}"
+        ;;
     esac
 }
 
