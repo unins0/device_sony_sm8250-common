@@ -270,7 +270,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 
 # SEMC Display
 PRODUCT_PACKAGES += \
-    vendor.semc.hardware.display@2.2.vendor
+    vendor.semc.hardware.display@2.4.vendor
 
 # Sensors
 PRODUCT_PACKAGES += \
