@@ -7,5 +7,5 @@
 runtime_resource_overlay {
     name: "SonyEdoCarrierConfigResCommon",
     aaptflags: ["--keep-raw-values"],
-    device_specific: true,
+    product_specific: true,
 }

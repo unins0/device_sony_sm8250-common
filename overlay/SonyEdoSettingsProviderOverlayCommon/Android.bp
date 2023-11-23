@@ -5,5 +5,5 @@
 
 runtime_resource_overlay {
     name: "SonyEdoSettingsProviderOverlayCommon",
-    device_specific: true,
+    product_specific: true,
 }
