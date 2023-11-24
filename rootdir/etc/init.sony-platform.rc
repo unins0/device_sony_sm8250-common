@@ -179,9 +179,6 @@ on boot
     chown system system /sys/devices/virtual/water_detection/wdet/wdet_polling_restart
     chmod 0660 /sys/devices/virtual/water_detection/wdet/wdet_polling_restart
 
-# Camera
-    write /dev/cpuset/camera-daemon/cpus 0-7
-
     # USB
     chown root system /config/usb_gadget/g1
 
