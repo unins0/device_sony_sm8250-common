@@ -310,10 +310,6 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_HAS_GADGET_HAL := true
 
-# Vendor Service Manager
-PRODUCT_PACKAGES += \
-    vndservicemanager
-
 # Vulkan
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml \
