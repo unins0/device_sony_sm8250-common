@@ -147,7 +147,6 @@ PRODUCT_PACKAGES += \
     libaudiopreprocessing \
     libbatterylistener \
     libbundlewrapper \
-    libcirrusspkrprot \
     libcomprcapture \
     libdownmix \
     libdynproc \
