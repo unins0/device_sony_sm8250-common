@@ -871,8 +871,6 @@ vendor/etc/vintf/manifest/vendor.qti.gnss@4.0-service.xml
 vendor/etc/cacert_location.pem
 vendor/etc/xtra_root_cert.pem
 vendor/etc/xtwifi.conf
-vendor/lib/libcdfw_remote_api.so
-vendor/lib/vendor.qti.hardware.qccsyshal@1.0.so
 vendor/lib64/hw/android.hardware.gnss@2.1-impl-qti.so
 vendor/lib64/hw/vendor.qti.gnss@4.0-impl.so
 vendor/lib64/libasn1cper.so
@@ -1164,8 +1162,6 @@ vendor/lib64/libswvdec.so
 # Peripheral manager
 vendor/bin/pm-proxy
 vendor/bin/pm-service
-vendor/lib/libperipheral_client.so
-vendor/lib/libspcom.so
 vendor/lib64/libperipheral_client.so
 vendor/lib64/libspcom.so
 
@@ -1589,7 +1585,6 @@ vendor/bin/ta_qmi_service
 # Time services
 vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
-vendor/lib/libtime_genoff.so
 vendor/lib64/libtime_genoff.so
 
 # Trimarea
