@@ -340,14 +340,6 @@ on property:sys.shutdown.requested=*
     write /sys/class/power_supply/battery/bootup_shutdown_phase 4
     write /sys/class/power_supply/battery/uevent change
 
-# bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B -z \
-        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
 # Set value in property to sysfs for SmartCharge
 on property:persist.vendor.battery.smt_chg=activate
     write /sys/class/power_supply/battery_ext/smart_charging_activation 1
