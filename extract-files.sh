@@ -72,6 +72,10 @@ function blob_fixup() {
         [ "$2" = "" ] && return 0
         grep -q "android.hidl.base@1.0.so" "${2}" && sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/g" "${2}"
         ;;
+    vendor/etc/msm_irqbalance.conf)
+        [ "$2" = "" ] && return 0
+        sed -i "s/IGNORED_IRQ=27,23,38$/&,115,332/" "${2}"
+        ;;
     product/lib64/libdpmframework.so)
         [ "$2" = "" ] && return 0
         grep -q "libhidltransport.so" "${2}" && sed -i "s/libhidltransport.so/libcutils-v29.so\x00\x00\x00/g" "${2}"
