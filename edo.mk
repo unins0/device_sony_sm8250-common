@@ -191,15 +191,11 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
-    init.qcom.class_core.sh \
-    init.qcom.coex.sh \
     init.qcom.early_boot.sh \
-    init.qcom.efs.sync.sh \
     init.qcom.msim.sh \
     init.qcom.factory.rc \
     init.qcom.post_boot.sh \
     init.qcom.rc \
-    init.qcom.sdio.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
     init.qcom.usb.rc \
@@ -209,7 +205,6 @@ PRODUCT_PACKAGES += \
     init.qti.dcvs.sh \
     init.qti.media.sh \
     init.qti.qcv.sh \
-    qca6234-service.sh \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc \
