@@ -189,11 +189,8 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     init_thermal.sh \
     init.class_main.sh \
-    init.crda.sh \
-    init.mdm.sh \
     init.qcom.early_boot.sh \
     init.qcom.msim.sh \
-    init.qcom.factory.rc \
     init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.sensors.sh \

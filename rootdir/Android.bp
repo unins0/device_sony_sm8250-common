@@ -11,13 +11,6 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.qcom.factory.rc",
-    src: "etc/init.qcom.factory.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
-
-prebuilt_etc {
     name: "init.qcom.rc",
     src: "etc/init.qcom.rc",
     sub_dir: "init/hw",
@@ -97,18 +90,6 @@ prebuilt_etc {
 sh_binary {
     name: "init.class_main.sh",
     src: "bin/init.class_main.sh",
-    vendor: true,
-}
-
-sh_binary {
-    name: "init.crda.sh",
-    src: "bin/init.crda.sh",
-    vendor: true,
-}
-
-sh_binary {
-    name: "init.mdm.sh",
-    src: "bin/init.mdm.sh",
     vendor: true,
 }
 
