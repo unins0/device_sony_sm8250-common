@@ -14,10 +14,6 @@ debug.gralloc.gfx_ubwc_disable=0
 debug.sf.latch_unsignaled=1
 persist.vendor.color.matrix=2
 
-# IOP
-vendor.iop.enable_prefetch_ofr=1
-vendor.iop.enable_uxe=0
-
 # Media
 media.settings.xml=/odm/etc/media_profiles_V1_0.xml
 media.stagefright.thumbnail.prefer_hw_codecs=true
