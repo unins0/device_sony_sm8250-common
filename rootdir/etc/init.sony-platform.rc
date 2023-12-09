@@ -78,16 +78,11 @@ on charger
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
 
-    # The charge_service/chargemon use wakelock before on boot, so add permission here.
+    # The chg-pwr-service use wakelock before on boot, so add permission here.
     chown radio wakelock /sys/power/wake_lock
     chown radio wakelock /sys/power/wake_unlock
     chmod 0660 /sys/power/wake_lock
     chmod 0660 /sys/power/wake_unlock
-
-    # charge_service
-    
-    
-    start charge_service
 
     # charge power service
     start chg-pwr-service
@@ -99,9 +94,6 @@ on charger
     write /config/usb_gadget/g1/idVendor 0x0fce
     symlink /config/usb_gadget/g1/functions/mass_storage.0 /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-
-    # chargemon
-    start chargemon
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
@@ -215,17 +207,13 @@ on post-fs-data
     chmod 0664 /sys/class/usbpd/usbpd0/select_pdo
     chmod 0664 /sys/class/usbpd/usbpd0/uevent
 
-    # The charge_service/chargemon use wakelock before on boot, so add permission here.
+    # The chg-pwr-service use wakelock before on boot, so add permission here.
     chown radio wakelock /sys/power/wake_lock
     chown radio wakelock /sys/power/wake_unlock
     chmod 0660 /sys/power/wake_lock
     chmod 0660 /sys/power/wake_unlock
 
     write /sys/class/power_supply/battery/enable_shutdown_at_low_battery 1
-
-    # charge_service
-    
-    start charge_service
 
     # backlight
     chown system system /sys/class/backlight/panel0-backlight/brightness
@@ -317,22 +305,6 @@ on post-fs-data
     # WLAN
     # Set default Wi-Fi country code as "00". It can be overridden by customization.
     setprop ro.boot.wificountrycode 00
-
-# chargemon
-service chargemon /vendor/bin/chargemon
-    user system
-    group root system oem_2993 wakelock input
-    capabilities SYS_BOOT
-    disabled
-
-# Charge service
-service charge_service /vendor/bin/charge_service
-    user system
-    # Add oem_2993 to the group of charge_service for access MiscTA.
-    # Add wakelock to the group of charge_service for access "/sys/power/wake_lock" and "/sys/power/wake_unlock".
-    group system root oem_2993 wakelock
-    task_profiles ServiceCapacityLow
-    disabled
 
 # chg-pwr-service
 service chg-pwr-service /vendor/bin/chg-pwr-service
