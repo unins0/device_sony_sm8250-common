@@ -34,12 +34,16 @@ genfscon sysfs /devices/platform/soc/1c00000.qcom,pcie/wakeup/wakeup            
 genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-dsps/wakeup/wakeup              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/b0000000.qcom,cnss-qca6390/wakeup/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/a94000.i2c/i2c-5/5-0048/wakeup/wakeup          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/a94000.i2c/i2c-4/4-0048/wakeup/wakeup41        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/diag/diag/wakeup                                    u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/wakeup/wakeup                u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-cdsp/wakeup/wakeup              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-npu/wakeup/wakeup               u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/98c000.i2c/i2c-2/2-003b/wakeup/wakeup          u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/1.sony,camera_modules/wakeup/wakeup            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/2.sony,camera_modules/wakeup/wakeup93          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/0.sony,camera_modules/wakeup/wakeup93          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/0.sony,camera_modules/wakeup/wakeup94          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/2.sony,camera_modules/wakeup/wakeup94          u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/98c000.i2c/i2c-2/2-003b/power_supply/wireless/wakeup                                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/1101_00.01.00/wakeup/wakeup     u:object_r:sysfs_wakeup:s0
