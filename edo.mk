@@ -430,7 +430,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.perf@2.2.vendor \
+    libqti-perfd-client \
     android.hardware.power-service.sony-libperfmgr
 
 PRODUCT_COPY_FILES += \
