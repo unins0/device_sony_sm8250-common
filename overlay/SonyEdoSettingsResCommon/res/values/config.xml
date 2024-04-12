@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Battery Health -->
+    <string name="config_batteryRemainingCapacityNode">/sys/class/power_supply/bms/charge_full</string>
+    <string name="config_batteryDesignCapacityNode">/sys/class/power_supply/bms/charge_full_design</string>
+    <string name="config_batteryChargeCycles">/sys/class/power_supply/bms/cycle_counts</string>
+
+</resources>
