@@ -29,13 +29,13 @@ prebuilt_etc {
     name: "init.sony.rc",
     src: "etc/init.sony.rc",
     sub_dir: "init",
-    vendor: true,
+    device_specific: true,
 }
 
 sh_binary {
     name: "init.sony.sh",
     src: "etc/init.sony.sh",
-    vendor: true,
+    device_specific: true,
 }
 
 prebuilt_etc {

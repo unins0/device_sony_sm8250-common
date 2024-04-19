@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-service sony_sh /vendor/bin/init.sony.sh
+service sony_sh /odm/bin/init.sony.sh
     user root
     group root
     oneshot
