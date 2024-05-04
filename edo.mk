@@ -163,6 +163,11 @@ PRODUCT_PACKAGES += \
     libvolumelistener
 
 # Audio Policies
+AUDIO_HAL_DIR := hardware/qcom-caf/sm8250/audio
+
+PRODUCT_COPY_FILES += \
+    $(AUDIO_HAL_DIR)/configs/kona/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
