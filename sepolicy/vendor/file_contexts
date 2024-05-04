@@ -51,7 +51,7 @@
 /dev/sony_camera4   u:object_r:sony_camera_device:s0
 
 # Shell scripts
-/(vendor|system/vendor)/bin/init\.sony\.sh        u:object_r:init-sony-sh_exec:s0
+/(vendor|system/vendor|odm|vendor/odm)/bin/init\.sony\.sh        u:object_r:init-sony-sh_exec:s0
 
 # Sys files
 /sys/devices/dsi_panel_driver(/.*)?                             u:object_r:sysfs_dp:s0
