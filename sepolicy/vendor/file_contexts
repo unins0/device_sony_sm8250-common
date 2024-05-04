@@ -27,7 +27,6 @@
 /(vendor|system/vendor|odm|vendor/odm)/bin/hw/vendor\.semc\.hardware\.secd@1\.1-service                     u:object_r:hal_secd_default_exec:s0
 /(vendor|system/vendor|odm|vendor/odm)/bin/hw/vendor\.semc\.system\.idd@1\.0-service                        u:object_r:hal_idd_default_exec:s0
 /(vendor|system/vendor|odm|vendor/odm)/bin/hw/vendor\.somc\.hardware\.camera\.provider@1\.0-service         u:object_r:hal_camera_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.1-service\.sony                              u:object_r:hal_lineage_livedisplay_qti_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.sony                                    u:object_r:hal_lineage_touch_default_exec:s0
 /(vendor|system/vendor|odm|vendor/odm)/bin/hw/vendor\.somc\.hardware\.miscta@1\.0-service                   u:object_r:hal_miscta_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.sony-libperfmgr                            u:object_r:hal_power_default_exec:s0
