@@ -19,27 +19,6 @@ on post-fs
     setprop persist.radio.multisim.config ${vendor.radio.multisim.config}
     setprop ro.vendor.ltalabel.model ${vendor.radio.ltalabel.model}
 
-on property:ro.vendor.ltalabel.model=XQ-AT42
-    setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf"
-
-on property:ro.vendor.ltalabel.model=XQ-AS42
-    setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf"
-
-on property:ro.vendor.ltalabel.model=SOG02
-    setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf"
-
-on property:ro.vendor.ltalabel.model=SOG01
-    setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf"
-
-on property:ro.vendor.ltalabel.model=A002SO
-    setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf"
-
-on property:ro.vendor.ltalabel.model=SO-52A
-    setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf"
-
-on property:ro.vendor.ltalabel.model=SO-51A
-    setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf"
-
 on property:sys.usb.config=adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x0FCE
     write /config/usb_gadget/g1/idProduct 0x320D

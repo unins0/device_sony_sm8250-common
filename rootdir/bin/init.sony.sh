@@ -9,42 +9,14 @@ case "$model" in
         setprop vendor.radio.multisim.config ss;;
 esac
 
-if [ "$model" == "" ]; then
-
-typef="false"
-
-    # Check if they are japense felica models
-    if grep -aim1 "XQ-AS42" "$ltapath" > /dev/null; then
-        typef="true"
-        setprop vendor.radio.ltalabel.model "XQ-AS42"
-    fi
-    if grep -aim1 "XQ-AT42" "$ltapath" > /dev/null; then
-        typef="true"
-        setprop vendor.radio.ltalabel.model "XQ-AT42"
-    fi
-    if grep -aim1 "SOG02" "$ltapath" > /dev/null; then
-        typef="true"
-        setprop vendor.radio.ltalabel.model "SOG02"
-    fi
-    if grep -aim1 "SOG01" "$ltapath" > /dev/null; then
-        typef="true"
-        setprop vendor.radio.ltalabel.model "SOG01"
-    fi
-    if grep -aim1 "A002SO" "$ltapath" > /dev/null; then
-        typef="true"
-        setprop vendor.radio.ltalabel.model "A002SO"
-    fi
-    if grep -aim1 "SO-52A" "$ltapath" > /dev/null; then
-        typef="true"
-        setprop vendor.radio.ltalabel.model "SO-52A"
-    fi
-    if grep -aim1 "SO-51A" "$ltapath" > /dev/null; then
-        typef="true"
-        setprop vendor.radio.ltalabel.model "SO-51A"
-    fi
-    if [ ! "$typef" == "true" ]; then
-        setprop vendor.radio.ltalabel.model "unknown"
-    fi
-else
-    setprop vendor.radio.ltalabel.model "$model"
+# If the model string is empty redo a check for carrier models and set it as the model.
+if [ -z "$model" ]; then
+    model=`awk -F'<b>' '/<b>/ {gsub(/<\/?[^>]+(>|$)/, "", $2); gsub(/&nbsp;/, "", $2); if (match($2, /SOG02|SOG01|SO-52A|SO-51A|A002SO/)) {print substr($2, RSTART, RLENGTH); exit}}' "$ltapath"`
 fi
+
+case "$model" in
+    "XQ-AT42" | "XQ-AS42" | "A002SO" | "SOG01" | "SOG02" | "SO-51A" | "SO-52A" )
+        setprop persist.vendor.nfc.config_file_name "libnfc-nxp-typef.conf";;
+    * )
+        setprop persist.vendor.nfc.config_file_name "libnfc-nxp.conf"
+esac
