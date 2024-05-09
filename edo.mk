@@ -431,6 +431,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     debug.hwui.use_hint_manager=true \
     debug.hwui.target_cpu_time_percent=30
 
+# Protobuf
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-3.9.1-vendorcompat
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson \
@@ -444,8 +448,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat \
     librmnetctl \
     extphonelib \
     extphonelib.xml
