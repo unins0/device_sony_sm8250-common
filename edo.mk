@@ -37,14 +37,12 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-yaap
+    $(LOCAL_PATH)/overlay-statix
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
-    DisplayFeaturesResCommon \
     CarrierConfigResCommon \
     NcmTetheringOverlay \
-    OpenDeltaResCommon \
     SimDualResCommon \
     SimSingleResCommon \
     SonyEdoFrameworksResCommon \
@@ -53,11 +51,6 @@ PRODUCT_PACKAGES += \
     SonyEdoSystemUIResCommon \
     SonyEdoTelephonyResCommon \
     WifiResCommon
-
-ifneq ($(TARGET_BUILD_GAPPS),true)
-PRODUCT_PACKAGES += \
-    OpenDeltaResCommon-vanilla
-endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -229,10 +222,6 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,EGL,USE_DISPLAY_ARRAY,true)
 
-# DisplayFeatures
-PRODUCT_PACKAGES += \
-    DisplayFeatures
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
@@ -287,10 +276,19 @@ PRODUCT_PACKAGES += \
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 
+TARGET_KERNEL_DIR ?= device/sony/sm8250-kernel
+LOCAL_KERNEL := $(TARGET_KERNEL_DIR)/Image
+
+PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
+
+# Kernel Headers
+PRODUCT_VENDOR_KERNEL_HEADERS += $(TARGET_KERNEL_DIR)/kernel-headers
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_performance_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_c2.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_kona_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_kona.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_performance_kona_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_kona.xml
 
 PRODUCT_COPY_FILES += \
@@ -298,7 +296,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_ODM)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
-$(call soong_config_set,stagefright,target_disables_thumbnail_block_model,true)
+$(call soong_config_set,stagefright,target_disable_thumbnail_block_model,true)
 
 # Light
 PRODUCT_PACKAGES += \
@@ -316,15 +314,25 @@ PRODUCT_PACKAGES += \
     SecureElement \
     Tag
 
+# OMX
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-service \
+    libOmxCore \
+    libOmxVdec \
+    libOmxVenc \
+    libstagefrighthw
+
 # Partitions
 PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
     vendor_dsp_mountpoint \
     vendor_firmware_mnt_mountpoint
 
-# Power
-TARGET_PROVIDES_POWERHAL := true
+# Platform
+PRODUCT_BOARD_PLATFORM := kona
+PRODUCT_USES_QCOM_HARDWARE := true
 
+# Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.pixel-libperfmgr \
     libqti-perfd-client
@@ -345,15 +353,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti.vendor # Needed by CNE app
 
-
-# QTI Components
-TARGET_BOARD_PLATFORM := kona
-TARGET_COMMON_QTI_COMPONENTS := \
-    alarm
-
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio-service.compat
+    android.hardware.radio-service.compat \
+    extphonelib \
+    extphonelib.xml
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -373,6 +377,22 @@ PRODUCT_PACKAGES += \
 
 # Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
+# Telephony
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    ims_ext_common.xml \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti.xml
 
 # Update engine
 PRODUCT_PACKAGES += \
@@ -414,18 +434,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
+# WiFi Display
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
+
 # WiFi firmware symlinks
 PRODUCT_PACKAGES += \
     firmware_wlanmdsp.otaupdate_symlink \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink
-
-# Dex to make OTA go faster
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    dalvik.vm.boot-dex2oat-cpu-set=1,2,3,4,5,6,7 \
-    dalvik.vm.boot-dex2oat-threads=7 \
-    dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7 \
-    dalvik.vm.image-dex2oat-threads=8
 
 # Xperia Modules
 TARGET_SHIPS_XPERIA_DISABLER := true
