@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += \
     SonyEdoTelephonyResCommon \
     WifiResCommon
 
-ifneq ($(TARGET_USES_EXTRAS_CAMERAAPPS),true)
+ifneq ($(TARGET_SHIPS_CAMERA_APPS),true)
 PRODUCT_PACKAGES += \
     ApertureResCommon
 endif
@@ -554,8 +554,23 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
 
-# XperiaParts
-PRODUCT_PACKAGES += \
-    XperiaParts
+# Xperia Modules
+include hardware/sony/XperiaModules.mk
+
+# Xperia Modules - Flags
+TARGET_SUPPORTS_CREATOR_MODE := true
+TARGET_SUPPORTS_HIGH_REFRESH_RATE := true
+TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
+TARGET_SUPPORTS_SOUND_ENHANCEMENT_DTS := false
+TARGET_SUPPORTS_BATTERY_CARE := false
+TARGET_SUPPORTS_EUICC := false
+
+# Extras
+$(call inherit-product, vendor/sony/extra/extra.mk)
+TARGET_SHIPS_CAMERA_APPS := true
+
+# Extras and XperiaModules Combined
+TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
+TARGET_SHIPS_SOUND_ENHANCEMENT := true
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
