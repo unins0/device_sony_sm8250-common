@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += \
     SonyEdoTelephonyResCommon \
     WifiResCommon
 
-ifneq ($(TARGET_SHIPS_CAMERA_APPS),true)
+ifneq ($(TARGET_SHIPS_SONY_CAMERA),true)
 PRODUCT_PACKAGES += \
     ApertureResCommon
 endif
@@ -565,7 +565,9 @@ TARGET_SUPPORTS_EUICC := false
 
 # Extras
 $(call inherit-product, vendor/sony/extra/extra.mk)
-TARGET_SHIPS_CAMERA_APPS := true
+TARGET_SHIPS_SONY_CAMERA := true
+TARGET_SHIPS_SONY_APPS := true
+TARGET_SUPPORTS_GAME_CONTROLLERS := true
 
 # Extras and XperiaModules Combined
 TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
