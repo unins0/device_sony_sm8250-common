@@ -1,0 +1,28 @@
+From 09ef7b1a64613551c62e5415cffc0451bc3d9aa3 Mon Sep 17 00:00:00 2001
+From: Han Sol Jin <hansol@hansol.ca>
+Date: Mon, 22 Apr 2024 08:53:46 -0700
+Subject: [PATCH] audio_amplifier: pass amplifier_device pointer to calibrate
+ as well
+
+Change-Id: I337c332bdd052354b99038fc2f62f1b01f8e4301
+---
+ include_all/hardware/audio_amplifier.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include_all/hardware/audio_amplifier.h b/include_all/hardware/audio_amplifier.h
+index 4b6f634..39589e2 100644
+--- a/include_all/hardware/audio_amplifier.h
++++ b/include_all/hardware/audio_amplifier.h
+@@ -136,7 +136,8 @@ typedef struct amplifier_device {
+     /**
+      * Amplifier calibration
+      */
+-    int (*calibrate)(void *adev);
++    int (*calibrate)(struct amplifier_device *device,
++        void *adev);
+ } amplifier_device_t;
+ 
+ typedef struct amplifier_module {
+-- 
+2.43.0
+
