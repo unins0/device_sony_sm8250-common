@@ -505,10 +505,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti.xml
 
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.sony
-
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
@@ -563,13 +559,13 @@ PRODUCT_COPY_FILES += \
 
 # Xperia Modules - Flags
 TARGET_SUPPORTS_CREATOR_MODE := true
-TARGET_SUPPORTS_SOUND_ENHANCEMENT_DTS := false
 TARGET_SUPPORTS_EUICC := false
 
 # Extras - Flags
 TARGET_SHIPS_SONY_CAMERA := true
 TARGET_SHIPS_SONY_APPS := true
 TARGET_SUPPORTS_GAME_CONTROLLERS := true
+TARGET_SUPPORTS_HIGH_POLLING_RATE := true
 
 # Extras and XperiaModules Combined
 TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
