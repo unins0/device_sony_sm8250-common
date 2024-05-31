@@ -18,7 +18,7 @@ echo -e
 git am ../../device/sony/sm8250-common/patches/frameworks_base/*
 cd ../..
 echo -e
-echo 'Applying X-Reality patches in packages/apps/Settings'
+echo 'Applying X-Reality/touch polling rate patches in packages/apps/Settings'
 cd packages/apps/Settings
 git reset --hard FETCH_HEAD
 echo -e
