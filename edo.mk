@@ -587,7 +587,7 @@ $(call inherit-product, hardware/sony/XperiaModules.mk)
 $(call inherit-product, vendor/sony/extra/extra.mk)
 
 # Keys for signing
--include vendor/lineage-priv/keys/keys.mk
+-include vendor/ahnet-priv/keys/keys.mk
 
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
