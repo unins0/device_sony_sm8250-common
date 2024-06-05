@@ -1,4 +1,4 @@
-From f56e68dc531b41f12389b0e30ffaae90182d27ed Mon Sep 17 00:00:00 2001
+From 4a597510f22e319c3b58b63fa919ee9342126970 Mon Sep 17 00:00:00 2001
 From: Vishalcj17 <vishalcj@aospa.co>
 Date: Sun, 19 Nov 2023 02:13:13 +0900
 Subject: [PATCH] Settings: Add a toggle for High touch polling rate
@@ -6,30 +6,29 @@ Subject: [PATCH] Settings: Add a toggle for High touch polling rate
 Co-authored-by: Danny Lin <danny@kdrag0n.dev>
 Change-Id: I86af721fde33226d314d8a44525f310828299a72
 ---
- res/values/config.xml                         |  3 +
- res/values/strings.xml                        |  6 ++
+ res/values/config.xml                         |  2 +
+ res/values/strings.xml                        |  5 ++
  res/xml/display_settings.xml                  |  6 ++
  .../TouchPollingPreferenceController.java     | 61 +++++++++++++++++++
- 4 files changed, 76 insertions(+)
+ 4 files changed, 74 insertions(+)
  create mode 100644 src/com/android/settings/display/TouchPollingPreferenceController.java
 
 diff --git a/res/values/config.xml b/res/values/config.xml
-index 42d168d..1f9598a 100644
+index 42d168d..80adc83 100644
 --- a/res/values/config.xml
 +++ b/res/values/config.xml
-@@ -783,4 +783,7 @@
+@@ -783,4 +783,6 @@
      <!-- Whether to display pSIM conversion menu in Settings.-->
      <bool name="config_psim_conversion_menu_enabled">false</bool>
  
 +    <!-- Whether device supports increased touch sensitvity -->
 +    <bool name="config_supportTouchPollingMode">false</bool>
-+
  </resources>
 diff --git a/res/values/strings.xml b/res/values/strings.xml
-index 292a5cc..a0dc141 100644
+index 292a5cc..5a44c0d 100644
 --- a/res/values/strings.xml
 +++ b/res/values/strings.xml
-@@ -12633,4 +12633,10 @@
+@@ -12633,4 +12633,9 @@
      <string name="content_protection_preference_subpage_summary"></string>
      <!-- Default information at the bottom of the subpage of content protection settings. Will be overlaid by OEM. -->
      <string name="content_protection_preference_subpage_info"></string>
@@ -38,15 +37,14 @@ index 292a5cc..a0dc141 100644
 +    <string name="touch_polling_title">High touch polling rate</string>
 +    <!-- Display settings screen, increased touch polling rate settings summary -->
 +    <string name="touch_polling_summary">Increase touchscreen polling rate to decrease latency</string>
-+
  </resources>
 diff --git a/res/xml/display_settings.xml b/res/xml/display_settings.xml
-index fd4478f..d7f51f0 100644
+index fd4478f..5030646 100644
 --- a/res/xml/display_settings.xml
 +++ b/res/xml/display_settings.xml
-@@ -166,6 +166,12 @@
-             android:summary="@string/display_white_balance_summary"
-             settings:controller="com.android.settings.display.DisplayWhiteBalancePreferenceController"/>
+@@ -248,6 +248,12 @@
+             android:defaultValue="false"
+             settings:requiresFeature="lineagehardware:FEATURE_HIGH_TOUCH_POLLING_RATE" />
  
 +        <SwitchPreference
 +            android:key="touch_polling"
@@ -54,9 +52,9 @@ index fd4478f..d7f51f0 100644
 +            android:summary="@string/touch_polling_summary"
 +            settings:controller="com.android.settings.display.TouchPollingPreferenceController" />
 +
-         <ListPreference
-             android:key="max_refresh_rate"
-             android:title="@string/max_refresh_rate_title"
+         <SwitchPreferenceCompat
+             android:key="touch_sensitivity"
+             android:title="@string/touch_sensitivity_title"
 diff --git a/src/com/android/settings/display/TouchPollingPreferenceController.java b/src/com/android/settings/display/TouchPollingPreferenceController.java
 new file mode 100644
 index 0000000..fdb9634
