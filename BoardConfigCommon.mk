@@ -19,6 +19,7 @@ BOARD_VENDOR := sony
 BUILD_BROKEN_DUP_RULES := true
 
 COMMON_PATH := device/sony/sm8250-common
+KERNEL_PATH := device/sony/sm8250-kernel
 
 # A/B
 AB_OTA_UPDATER := true
@@ -78,6 +79,14 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_CONFIG := \
     vendor/kona-perf_defconfig \
     vendor/edo.config
+
+TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo/dtbo.img
+
+BOARD_PREBUILT_DTBIMAGE_DIR := $(TARGET_KERNEL_DIR)/dtb
+BOARD_MKBOOTIMG_ARGS += --dtb $(KERNEL_PATH)/dtb/dtb.img
 
 # Use External DTC
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
@@ -175,7 +184,6 @@ TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/configs/properties/system_ext.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/properties/vendor.prop
 
 # Recovery
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
