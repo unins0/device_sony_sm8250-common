@@ -295,6 +295,11 @@ PRODUCT_PACKAGES += \
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 
+LOCAL_KERNEL := device/sony/sm8250-kernel/Image-$(DEVICE_MODEL)
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_KERNEL):kernel
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
