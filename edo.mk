@@ -21,9 +21,8 @@ $(call inherit-product, vendor/sony/sm8250-common/sm8250-common-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # VNDK
-BOARD_API_LEVEL := 29
-BOARD_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
-PRODUCT_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
+BOARD_SHIPPING_API_LEVEL := 29
+PRODUCT_SHIPPING_API_LEVEL := $(BOARD_SHIPPING_API_LEVEL)
 PRODUCT_USE_PRODUCT_VNDK_OVERRIDE := true
 
 PRODUCT_COPY_FILES += \
