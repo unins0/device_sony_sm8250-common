@@ -124,6 +124,7 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    libaudioroute.vendor \
     android.hardware.audio@7.1-impl \
     android.hardware.audio.effect@7.0-impl \
     android.hardware.audio.service \
@@ -137,7 +138,8 @@ PRODUCT_PACKAGES += \
     audio.primary.kona \
     audio.r_submix.default \
     audio.usb.default \
-    sound_trigger.primary.kona
+    sound_trigger.primary.kona \
+    libprocessgroup.vendor
 
 PRODUCT_PACKAGES += \
     liba2dpoffload \
@@ -388,6 +390,7 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libcodec2_hidl@1.0.vendor \
     libcodec2_vndk.vendor \
+    libstagefright_softomx_plugin.vendor \
     libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
