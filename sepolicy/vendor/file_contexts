@@ -81,3 +81,7 @@
 # NFC devices
 /dev/pn553                                                u:object_r:nfc_device:s0
 
+# TEE
+/dev/sda    u:object_r:tee_device:s0
+/dev/sdb    u:object_r:tee_device:s0
+/dev/sdc    u:object_r:tee_device:s0
