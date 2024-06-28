@@ -7,3 +7,5 @@ allow hal_audio_default hal_miscta_default:binder { call };
 allow hal_audio_default vendor_sysfs_kgsl:file r_file_perms;
 
 get_prop(hal_audio_default, vendor_tee_listener_prop)
+
+get_prop(hal_audio_default, vendor_pd_locater_dbg_prop)
