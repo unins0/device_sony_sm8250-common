@@ -215,6 +215,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 PRODUCT_PACKAGES += \
     AOSPASonyEdoFrameworksResCommon \
+    SonyEdoDeviceAsWebcamOverlay \
     SonyEdoFrameworksResCommon \
     SonyEdoNfcOverlay \
     SonyEdoSettingsProviderOverlayCommon \
