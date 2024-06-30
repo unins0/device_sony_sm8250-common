@@ -1,4 +1,4 @@
-From b68b1ac48d33e349d156481b8fac3c3fc4bf9fdd Mon Sep 17 00:00:00 2001
+From 1b325287a89dd45e3a9aed7153cbddd96b62a78a Mon Sep 17 00:00:00 2001
 From: Vishalcj17 <vishalcj@aospa.co>
 Date: Sun, 19 Nov 2023 02:13:13 +0900
 Subject: [PATCH] Settings: Add a toggle for High touch polling rate
@@ -6,43 +6,48 @@ Subject: [PATCH] Settings: Add a toggle for High touch polling rate
 Co-authored-by: Danny Lin <danny@kdrag0n.dev>
 Change-Id: I86af721fde33226d314d8a44525f310828299a72
 ---
- res/values/config.xml                         |  2 +
+ res/values/config.xml                         |  3 +
  res/values/strings.xml                        |  5 ++
  res/xml/display_settings.xml                  |  6 ++
  .../TouchPollingPreferenceController.java     | 61 +++++++++++++++++++
- 4 files changed, 74 insertions(+)
+ 4 files changed, 75 insertions(+)
  create mode 100644 src/com/android/settings/display/TouchPollingPreferenceController.java
 
 diff --git a/res/values/config.xml b/res/values/config.xml
-index 42d168d..80adc83 100644
+index c11adc8..f6374c5 100644
 --- a/res/values/config.xml
 +++ b/res/values/config.xml
-@@ -783,4 +783,6 @@
+@@ -805,6 +805,9 @@
      <!-- Whether to display pSIM conversion menu in Settings.-->
      <bool name="config_psim_conversion_menu_enabled">false</bool>
  
 +    <!-- Whether device supports increased touch sensitvity -->
 +    <bool name="config_supportTouchPollingMode">false</bool>
- </resources>
++
+     <!-- Array of carrier id to allow the pSIM conversion-->
+     <integer-array name="config_psim_conversion_menu_enabled_carrier" translatable="false">
+     </integer-array>
 diff --git a/res/values/strings.xml b/res/values/strings.xml
-index 292a5cc..5a44c0d 100644
+index c3950af..f253c69 100644
 --- a/res/values/strings.xml
 +++ b/res/values/strings.xml
-@@ -12633,4 +12633,9 @@
-     <string name="content_protection_preference_subpage_summary"></string>
+@@ -13009,6 +13009,11 @@
      <!-- Default information at the bottom of the subpage of content protection settings. Will be overlaid by OEM. -->
      <string name="content_protection_preference_subpage_info"></string>
-+
+ 
 +    <!-- Display settings screen, increased touch polling rate settings title -->
 +    <string name="touch_polling_title">High touch polling rate</string>
 +    <!-- Display settings screen, increased touch polling rate settings summary -->
 +    <string name="touch_polling_summary">Increase touchscreen polling rate to decrease latency</string>
- </resources>
++
+     <!-- Content description for setting password complete-->
+     <string name="accessibility_setup_password_complete">Password is now set up</string>
+ 
 diff --git a/res/xml/display_settings.xml b/res/xml/display_settings.xml
-index fd4478f..73b8adc 100644
+index f52918d..79389ab 100644
 --- a/res/xml/display_settings.xml
 +++ b/res/xml/display_settings.xml
-@@ -248,6 +248,12 @@
+@@ -253,6 +253,12 @@
              android:defaultValue="false"
              settings:requiresFeature="lineagehardware:FEATURE_HIGH_TOUCH_POLLING_RATE" />
  
