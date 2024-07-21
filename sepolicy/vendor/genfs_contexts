@@ -35,7 +35,6 @@ genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-dsps/wakeup/wakeup          
 genfscon sysfs /devices/platform/soc/b0000000.qcom,cnss-qca6390/wakeup/wakeup       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/a94000.i2c/i2c-5/5-0048/wakeup/wakeup          u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/a94000.i2c/i2c-4/4-0048/wakeup/wakeup41        u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/diag/diag/wakeup                                    u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/wakeup/wakeup                u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-cdsp/wakeup/wakeup              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,smp2p-npu/wakeup/wakeup               u:object_r:sysfs_wakeup:s0
