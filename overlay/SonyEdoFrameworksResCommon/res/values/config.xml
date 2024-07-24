@@ -488,5 +488,8 @@
     <!-- Whether the device enable the non-standalone (NSA) mode of 5G NR.-->
     <bool name="config_telephony5gNonStandalone">true</bool>
 
+    <!-- Disables pocket mode lock -->
+    <bool name="config_pocketModeSupported">false</bool>
+
 </resources>
 
