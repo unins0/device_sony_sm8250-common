@@ -316,8 +316,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
-# XperiaParts
-$(call inherit-product, hardware/sony/XperiaParts.mk)
-
 # Keys for signing
 -include vendor/ahnet-priv/keys/keys.mk
