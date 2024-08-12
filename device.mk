@@ -318,3 +318,6 @@ PRODUCT_COPY_FILES += \
 
 # XperiaParts
 $(call inherit-product, hardware/sony/XperiaParts.mk)
+
+# Keys for signing
+-include vendor/ahnet-priv/keys/keys.mk
