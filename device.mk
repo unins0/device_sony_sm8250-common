@@ -319,5 +319,25 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
+# Xperia Modules - Flags
+TARGET_SUPPORTS_CREATOR_MODE := true
+TARGET_SUPPORTS_EUICC := false
+
+# Extras - Flags
+TARGET_SHIPS_SONY_CAMERA := true
+TARGET_SHIPS_SONY_APPS := true
+TARGET_SUPPORTS_GAME_CONTROLLERS := true
+TARGET_SUPPORTS_HIGH_POLLING_RATE := true
+
+# Extras and XperiaModules Combined
+TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
+TARGET_SHIPS_SOUND_ENHANCEMENT := true
+
+# Xperia Modules
+$(call inherit-product, hardware/sony/XperiaModules.mk)
+
+# Extras
+$(call inherit-product, vendor/sony/extra/extra.mk)
+
 # Keys for signing
 -include vendor/ahnet-priv/keys/keys.mk
