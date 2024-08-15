@@ -346,6 +346,3 @@ $(call inherit-product, hardware/sony/XperiaModules.mk)
 
 # Extras
 $(call inherit-product, vendor/sony/extra/extra.mk)
-
-# Keys for signing
--include vendor/ahnet-priv/keys/keys.mk
