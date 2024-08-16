@@ -36,3 +36,6 @@ function apply() {
 }
 
 apply
+
+rm -rf vendor/qcom/opensource/power
+echo 'Deleted vendor/qcom/opensource/power to avoid manifest error'
