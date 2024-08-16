@@ -27,7 +27,6 @@ function apply() {
         SOURCEPATH=${SOURCEPATH//_//} # replace _ with / to make a path to directory to patch
 
 	if [ $SOURCEPATH == "build" ]; then SOURCEPATH="build/make"; fi # Replace build with build/make
-        if [ $SOURCEPATH == "device/qcom/sepolicy/vndr" ]; then SOURCEPATH="device/qcom/sepolicy_vndr"; fi # Fixup sepolicy repo
 
         patch $FOLDER $SOURCEPATH
     done
