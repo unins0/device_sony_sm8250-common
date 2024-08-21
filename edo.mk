@@ -454,8 +454,10 @@ TARGET_COMMON_QTI_COMPONENTS := \
     av
 
 # Remove Packages
+ifeq ($(TARGET_BUILD_GAPPS),true)
 PRODUCT_PACKAGES += \
     RemovePackages
+endif
 
 # RIL
 PRODUCT_PACKAGES += \
