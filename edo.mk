@@ -430,12 +430,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     av \
     media
 
-# Remove Packages
-ifeq ($(TARGET_BUILD_GAPPS),true)
-PRODUCT_PACKAGES += \
-    RemovePackages
-endif
-
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
