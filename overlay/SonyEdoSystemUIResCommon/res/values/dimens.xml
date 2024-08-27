@@ -24,4 +24,10 @@
          burn-in on status bar and navigation bar. -->
     <dimen name="horizontal_max_shift">4.0dp</dimen>
 
+    <!-- Margin on the left side of the carrier text on Keyguard -->
+    <dimen name="keyguard_carrier_text_margin">14dp</dimen>
+
+    <!-- the padding on the start of the statusbar -->
+    <dimen name="status_bar_padding_start">28dp</dimen>
+
 </resources>
