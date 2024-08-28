@@ -1,0 +1,70 @@
+From 2e09fbbce6403718476f19c9f741a3b84cd6a8fd Mon Sep 17 00:00:00 2001
+From: Luofan Chen <clfbbn@gmail.com>
+Date: Sat, 20 Aug 2022 19:10:01 +0800
+Subject: [PATCH 2/3] audio_amplifier: Change the enable amplifier function
+ location
+
+Make the call to audio_amplifier_enable_devices consistent.
+
+The call site of the function audio_amplifier_enable_device is
+inconsistent. It enables the amplifier when the spkr_prot feature
+is detected and enabled, but disables the amplifier only when the
+spkr_prot feature is disabled.
+
+Normally, the amplifier should be enabled when starting a playback and
+disabled when the playback stops, meaning that the enable and disable
+call to the function should be under the same condition.
+
+Furthermore, the HAL should always call this function with enough
+information to let the amplifier module itself decide whether it should
+proceed or just return.
+
+Move both the call site of `amplifier_enable_devices` out of the if
+guard, such that the call sites are consistent.
+
+Signed-off-by: Luofan Chen <clfbbn@gmail.com>
+Change-Id: Icb90cb6301b8dc2425561d3c1717d74733807e0e
+(cherry picked from commit 11d58c5174f09193f01947287fd4dd382623648c)
+---
+ hal/audio_hw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hal/audio_hw.c b/hal/audio_hw.c
+index 25b47cc..fe8e300 100644
+--- a/hal/audio_hw.c
++++ b/hal/audio_hw.c
+@@ -1380,6 +1380,7 @@ int enable_snd_device(struct audio_device *adev,
+          audio_extn_spkr_prot_calib_cancel(adev);
+ 
+     audio_extn_dsm_feedback_enable(adev, snd_device, true);
++    amplifier_enable_devices(snd_device, true);
+ 
+     if (platform_can_enable_spkr_prot_on_device(snd_device) &&
+          audio_extn_spkr_prot_is_enabled()) {
+@@ -1387,7 +1388,6 @@ int enable_snd_device(struct audio_device *adev,
+             goto err;
+         }
+         audio_extn_dev_arbi_acquire(snd_device);
+-        amplifier_enable_devices(snd_device, true);
+         if (audio_extn_spkr_prot_start_processing(snd_device)) {
+             ALOGE("%s: spkr_start_processing failed", __func__);
+             audio_extn_dev_arbi_release(snd_device);
+@@ -1521,6 +1521,7 @@ int disable_snd_device(struct audio_device *adev,
+         ALOGD("%s: snd_device(%d: %s)", __func__, snd_device, device_name);
+ 
+         audio_extn_dsm_feedback_enable(adev, snd_device, false);
++        amplifier_enable_devices(snd_device, false);
+ 
+         if (platform_can_enable_spkr_prot_on_device(snd_device) &&
+              audio_extn_spkr_prot_is_enabled()) {
+@@ -1539,7 +1540,6 @@ int disable_snd_device(struct audio_device *adev,
+             platform_set_speaker_gain_in_combo(adev, snd_device, false);
+         } else {
+             audio_route_reset_and_update_path(adev->audio_route, device_name);
+-            amplifier_enable_devices(snd_device, false);
+         }
+ 
+         if (snd_device == SND_DEVICE_OUT_BT_A2DP) {
+-- 
+2.43.0
+

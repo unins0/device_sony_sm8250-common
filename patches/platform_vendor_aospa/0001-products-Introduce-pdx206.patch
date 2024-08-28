@@ -1,0 +1,131 @@
+From fb3a5fa235ae2a2912f9fd8a6fe2ca20fa85cb71 Mon Sep 17 00:00:00 2001
+From: ahnet-69 <syedmusicrealise@gmail.com>
+Date: Wed, 28 Aug 2024 17:26:38 +0000
+Subject: [PATCH] products: Introduce pdx206
+
+---
+ products/AndroidProducts.mk        |  2 ++
+ products/pdx206/aospa.dependencies | 38 +++++++++++++++++++++++++
+ products/pdx206/aospa_pdx206.mk    | 45 ++++++++++++++++++++++++++++++
+ 3 files changed, 85 insertions(+)
+ create mode 100644 products/pdx206/aospa.dependencies
+ create mode 100644 products/pdx206/aospa_pdx206.mk
+
+diff --git a/products/AndroidProducts.mk b/products/AndroidProducts.mk
+index ad84686..1908501 100644
+--- a/products/AndroidProducts.mk
++++ b/products/AndroidProducts.mk
+@@ -48,6 +48,7 @@ PRODUCT_MAKEFILES += \
+     $(LOCAL_DIR)/oneplus9r/aospa_oneplus9r.mk \
+     $(LOCAL_DIR)/oriole/aospa_oriole.mk \
+     $(LOCAL_DIR)/panther/aospa_panther.mk \
++    $(LOCAL_DIR)/pdx206/aospa_pdx206.mk \
+     $(LOCAL_DIR)/pdx234/aospa_pdx234.mk \
+     $(LOCAL_DIR)/phoenix/aospa_phoenix.mk \
+     $(LOCAL_DIR)/phone1/aospa_phone1.mk \
+@@ -97,6 +98,7 @@ COMMON_LUNCH_CHOICES += \
+     aospa_oneplus9r-userdebug \
+     aospa_oriole-userdebug \
+     aospa_panther-userdebug \
++    aospa_pdx206-userdebug \
+     aospa_pdx234-userdebug \
+     aospa_phoenix-userdebug \
+     aospa_phone1-userdebug \
+diff --git a/products/pdx206/aospa.dependencies b/products/pdx206/aospa.dependencies
+new file mode 100644
+index 0000000..09dd3f6
+--- /dev/null
++++ b/products/pdx206/aospa.dependencies
+@@ -0,0 +1,38 @@
++[
++    {
++        "remote":       "aospa",
++        "repository":   "AOSPA/android_hardware_qcom_audio",
++        "target_path":  "vendor/qcom/opensource/audio-hal/primary-hal",
++        "revision":     "uvite-865"
++    },
++    {
++        "remote":       "aospa",
++        "repository":   "AOSPA/android_hardware_qcom_display",
++        "target_path":  "hardware/qcom/display",
++        "revision":     "uvite-865"
++    },
++    {
++        "remote":       "aospa",
++        "repository":   "AOSPA/android_hardware_qcom_gps",
++        "target_path":  "hardware/qcom/gps",
++        "revision":     "uvite-legacy-component"
++    },
++    {
++        "remote":       "aospa",
++        "repository":   "AOSPA/android_hardware_qcom_media",
++        "target_path":  "hardware/qcom/media",
++        "revision":     "uvite-865"
++    },
++    {
++        "remote":       "aospa",
++        "repository":   "AOSPA/android_vendor_nxp_opensource_halimpl",
++        "target_path":  "vendor/nxp/opensource/halimpl",
++        "revision":     "uvite-SN100X-legacy"
++    },
++    {
++        "remote":       "aospa",
++        "repository":   "AOSPA/android_vendor_nxp_opensource_hidlimpl",
++        "target_path":  "vendor/nxp/opensource/hidlimpl",
++        "revision":     "uvite-SN100X-legacy"
++    }
++]
+diff --git a/products/pdx206/aospa_pdx206.mk b/products/pdx206/aospa_pdx206.mk
+new file mode 100644
+index 0000000..e3b10fb
+--- /dev/null
++++ b/products/pdx206/aospa_pdx206.mk
+@@ -0,0 +1,45 @@
++# Copyright (C) 2022-2024 Paranoid Android
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#      http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++ifeq (aospa_pdx206, $(TARGET_PRODUCT))
++
++# Inherit from those products. Most specific first.
++$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
++$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
++
++# Inherit from the custom device configuration.
++$(call inherit-product, device/sony/pdx206/device.mk)
++
++# Inherit from the AOSPA configuration.
++$(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
++
++PRODUCT_NAME := aospa_pdx206
++PRODUCT_BRAND := Sony
++PRODUCT_DEVICE := pdx206
++PRODUCT_MANUFACTURER := Sony
++PRODUCT_MODEL := XQ-AS72
++
++PRODUCT_SYSTEM_NAME := XQ-AS72
++PRODUCT_SYSTEM_DEVICE := XQ-AS72
++
++PRODUCT_GMS_CLIENTID_BASE := android-sonymobile
++
++# Boot animation resolution.
++TARGET_BOOT_ANIMATION_RES := 1080
++
++PRODUCT_BUILD_PROP_OVERRIDES += \
++    TARGET_DEVICE=$(PRODUCT_SYSTEM_DEVICE) \
++    TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
++
++endif
+-- 
+2.43.0
+
