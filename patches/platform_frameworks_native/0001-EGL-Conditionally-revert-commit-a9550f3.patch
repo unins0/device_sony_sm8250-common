@@ -1,0 +1,159 @@
+From 2cf9a46e0b0acbb4d3b044e9a7f92f8bf043fc8e Mon Sep 17 00:00:00 2001
+From: saku-bruh <saku-bruh@proton.me>
+Date: Thu, 29 Aug 2024 09:40:38 +0000
+Subject: [PATCH] EGL: Conditionally revert commit a9550f3
+
+Change-Id: Id493440ee0cd0f83b2484dad68d1211e3920d42e
+---
+ opengl/libs/Android.bp          |  5 ++++-
+ opengl/libs/EGL/egl_display.cpp | 32 +++++++++++++++++++++++++++++++-
+ opengl/libs/EGL/egl_display.h   | 11 ++++++++++-
+ 3 files changed, 45 insertions(+), 3 deletions(-)
+
+diff --git a/opengl/libs/Android.bp b/opengl/libs/Android.bp
+index 16de390..eb30801 100644
+--- a/opengl/libs/Android.bp
++++ b/opengl/libs/Android.bp
+@@ -151,7 +151,10 @@ cc_library_static {
+ 
+ cc_library_shared {
+     name: "libEGL",
+-    defaults: ["egl_libs_defaults"],
++    defaults: [
++        "egl_libs_defaults",
++        "egl_display_array_defaults",
++    ],
+     llndk: {
+         symbol_file: "libEGL.map.txt",
+         export_llndk_headers: ["gl_headers"],
+diff --git a/opengl/libs/EGL/egl_display.cpp b/opengl/libs/EGL/egl_display.cpp
+index 3317347..f249254 100644
+--- a/opengl/libs/EGL/egl_display.cpp
++++ b/opengl/libs/EGL/egl_display.cpp
+@@ -74,8 +74,12 @@ int egl_get_init_count(EGLDisplay dpy) {
+     return eglDisplay ? eglDisplay->getRefsCount() : 0;
+ }
+ 
++#ifdef EGL_DISPLAY_ARRAY
++egl_display_t egl_display_t::sDisplay[NUM_DISPLAYS];
++#else
+ std::map<EGLDisplay, std::unique_ptr<egl_display_t>> egl_display_t::displayMap;
+ std::mutex egl_display_t::displayMapLock;
++#endif
+ 
+ egl_display_t::egl_display_t()
+       : magic('_dpy'),
+@@ -94,12 +98,21 @@ egl_display_t* egl_display_t::get(EGLDisplay dpy) {
+         return nullptr;
+     }
+ 
++#ifdef EGL_DISPLAY_ARRAY
++    uintptr_t index = uintptr_t(dpy) - 1U;
++    if (index >= NUM_DISPLAYS || !sDisplay[index].isValid()) {
++#else
+     const std::lock_guard<std::mutex> lock(displayMapLock);
+     auto search = displayMap.find(dpy);
+     if (search == displayMap.end() || !search->second->isValid()) {
+         return nullptr;
++#endif
+     }
++#ifdef EGL_DISPLAY_ARRAY
++    return &sDisplay[index];
++#else
+     return search->second.get();
++#endif
+ }
+ 
+ void egl_display_t::addObject(egl_object_t* object) {
+@@ -127,7 +140,11 @@ EGLDisplay egl_display_t::getFromNativeDisplay(EGLNativeDisplayType disp,
+                                                const EGLAttrib* attrib_list) {
+     if (uintptr_t(disp) >= NUM_DISPLAYS) return nullptr;
+ 
++#ifdef EGL_DISPLAY_ARRAY
++    return sDisplay[uintptr_t(disp)].getPlatformDisplay(disp, attrib_list);
++#else
+     return getPlatformDisplay(disp, attrib_list);
++#endif
+ }
+ 
+ static EGLDisplay getPlatformDisplayAngle(EGLNativeDisplayType display, egl_connection_t* const cnx,
+@@ -182,6 +199,9 @@ static EGLDisplay getPlatformDisplayAngle(EGLNativeDisplayType display, egl_conn
+ 
+ EGLDisplay egl_display_t::getPlatformDisplay(EGLNativeDisplayType display,
+                                              const EGLAttrib* attrib_list) {
++#ifdef EGL_DISPLAY_ARRAY
++    std::lock_guard<std::mutex> _l(lock);
++#endif
+     ATRACE_CALL();
+ 
+     // get our driver loader
+@@ -217,9 +237,14 @@ EGLDisplay egl_display_t::getPlatformDisplay(EGLNativeDisplayType display,
+             }
+         }
+ 
++#ifdef EGL_DISPLAY_ARRAY
++        disp.dpy = dpy;
++#endif
+         if (dpy == EGL_NO_DISPLAY) {
+             loader.close(cnx);
+-        } else {
++        }
++#ifndef EGL_DISPLAY_ARRAY
++        else {
+             const std::lock_guard<std::mutex> lock(displayMapLock);
+             if (displayMap.find(dpy) == displayMap.end()) {
+                 auto d = std::make_unique<egl_display_t>();
+@@ -228,9 +253,14 @@ EGLDisplay egl_display_t::getPlatformDisplay(EGLNativeDisplayType display,
+             }
+             return dpy;
+         }
++#endif
+     }
+ 
++#ifdef EGL_DISPLAY_ARRAY
++    return EGLDisplay(uintptr_t(display) + 1U);
++#else
+     return nullptr;
++#endif
+ }
+ 
+ EGLBoolean egl_display_t::initialize(EGLint* major, EGLint* minor) {
+diff --git a/opengl/libs/EGL/egl_display.h b/opengl/libs/EGL/egl_display.h
+index 87c2176..c459ec7 100644
+--- a/opengl/libs/EGL/egl_display.h
++++ b/opengl/libs/EGL/egl_display.h
+@@ -22,9 +22,10 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
+-#include <condition_variable>
++#ifndef EGL_DISPLAY_ARRAY
+ #include <map>
+ #include <memory>
++#endif
+ #include <mutex>
+ #include <string>
+ #include <unordered_set>
+@@ -42,11 +43,19 @@ bool findExtension(const char* exts, const char* name, size_t nameLen = 0);
+ bool needsAndroidPEglMitigation();
+ 
+ class EGLAPI egl_display_t { // marked as EGLAPI for testing purposes
++#ifdef EGL_DISPLAY_ARRAY
++    static egl_display_t sDisplay[NUM_DISPLAYS];
++#else
+     static std::map<EGLDisplay, std::unique_ptr<egl_display_t>> displayMap;
+     static std::mutex displayMapLock;
++#endif
+     EGLDisplay getDisplay(EGLNativeDisplayType display);
++#ifdef EGL_DISPLAY_ARRAY
++    EGLDisplay getPlatformDisplay(EGLNativeDisplayType display, const EGLAttrib* attrib_list);
++#else
+     static EGLDisplay getPlatformDisplay(EGLNativeDisplayType display,
+                                          const EGLAttrib* attrib_list);
++#endif
+     void loseCurrentImpl(egl_context_t* cur_c);
+ 
+ public:
+-- 
+2.34.1
+
