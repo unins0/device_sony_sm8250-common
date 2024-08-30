@@ -24,7 +24,6 @@ ro.vendor.audio.sdk.fluencetype?=fluence
 vendor.audio.enable.cirrus.speaker=true
 
 # Bluetooth
-bluetooth.device.default_name=Xperia 5 II
 bluetooth.hardware.power.idle_cur_ma=6
 bluetooth.hardware.power.operating_voltage_mv=3700
 bluetooth.hardware.power.rx_cur_ma=28

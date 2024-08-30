@@ -11,7 +11,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Inherit from vendor blobs
-$(call inherit-product, vendor/sony/pdx206/pdx206-vendor.mk)
+$(call inherit-product, vendor/sony/sm8250-common/sm8250-common-vendor.mk)
 
 # Inherit from sony extra stuff
 $(call inherit-product-if-exists, vendor/sony/extra/extra.mk)
@@ -23,10 +23,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 BOARD_API_LEVEL := 29
 BOARD_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
 PRODUCT_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
-
-# AAPT
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Additional native libraries
 PRODUCT_COPY_FILES += \
@@ -64,9 +60,6 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio_amplifier.kona
-
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -136,10 +129,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
 
-# HDR
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/display/libhdr_somc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/libhdr_somc.xml
-
 # Init
 PRODUCT_PACKAGES += \
     init.target.rc \
@@ -147,11 +136,11 @@ PRODUCT_PACKAGES += \
     init.sony-platform.rc \
     init.sony.rc \
     init.qcom.msim.sh \
-    ueventd.pdx206.rc
+    ueventd.edo.rc
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
+    $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
@@ -218,15 +207,12 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    AOSPASonyFrameworksResCommon \
+    AOSPASonyEdoFrameworksResCommon \
     SonyEdoFrameworksResCommon \
     SonyEdoNfcOverlay \
     SonyEdoSettingsProviderOverlayCommon \
     SonyEdoSettingsResCommon \
-    SonyEdoSystemUIResCommon \
-    SonyPDX206FrameworksRes \
-    SonyPDX206SettingsRes \
-    SonyPDX206SystemUIRes
+    SonyEdoSystemUIResCommon
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -335,7 +321,6 @@ TARGET_SUPPORTS_EUICC := false
 TARGET_SHIPS_SONY_CAMERA := true
 TARGET_SHIPS_SONY_APPS := true
 TARGET_SUPPORTS_GAME_CONTROLLERS := true
-TARGET_SUPPORTS_HIGH_POLLING_RATE := true
 
 # Extras and XperiaModules Combined
 TARGET_SUPPORTS_SOUND_ENHANCEMENT := true

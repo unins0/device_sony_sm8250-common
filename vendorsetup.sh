@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TOP=$(pwd)
-PATCHES=$TOP/device/sony/pdx206/patches
+PATCHES=$TOP/device/sony/sm8250-common/patches
 RESET=true
 
 function patch () {

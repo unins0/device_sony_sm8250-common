@@ -40,8 +40,8 @@ sh_binary {
 }
 
 prebuilt_etc {
-    name: "ueventd.pdx206.rc",
+    name: "ueventd.edo.rc",
     filename: "ueventd.rc",
-    src: "ueventd.pdx206.rc",
+    src: "ueventd.edo.rc",
     vendor: true,
 }
