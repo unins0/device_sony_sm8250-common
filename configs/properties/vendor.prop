@@ -94,13 +94,6 @@ debug.stagefright.ccodec=1
 # NFC
 ro.camera.notify_nfc=1
 
-# PASR
-vendor.power.pasr.enabled?=true
-vendor.pasr.activemode.enabled?=true
-
-# Perf
-ro.vendor.extension_library=libqti-perfd-client.so
-
 # Sensors
 persist.vendor.sensors.sync_request=true
 persist.vendor.sensors.allow_non_default_discovery=true
