@@ -1,0 +1,3 @@
+# Sensor
+ro.sensor.pickup=android.sensor.tilt_detector
+ro.sensor.pickup.value=0
