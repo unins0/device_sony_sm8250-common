@@ -33,3 +33,5 @@ allow hal_camera_default hal_secd_default:binder call;
 
 get_prop(hal_camera_default, somc_thermal_prop)
 set_prop(hal_camera_default, somc_camera_prop)
+
+binder_call(hal_camera_default, vendor_hal_qspmhal_default)
