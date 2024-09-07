@@ -77,7 +77,7 @@
     </effects>
     <postprocess>
         <stream type="music">
-            <apply effect="music_helper"/>
+            <!-- apply effect="music_helper"/ -->
         </stream>
     </postprocess>
     <preprocess>
