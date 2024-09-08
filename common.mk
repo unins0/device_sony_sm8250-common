@@ -294,6 +294,9 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
+# USB
+PRODUCT_HAS_GADGET_HAL := true
+
 # Vendor Service Manager
 PRODUCT_PACKAGES += \
     vndservicemanager
