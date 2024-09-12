@@ -19,7 +19,7 @@ index c304046..ecf0663 100644
 +soong_config_module_type {
 +    name: "egl_display_array",
 +    module_type: "cc_defaults",
-+    config_namespace: "lineageGlobalVars",
++    config_namespace: "aospaGlobalVars",
 +    bool_variables: ["uses_egl_display_array"],
 +    properties: ["cflags"],
 +}
