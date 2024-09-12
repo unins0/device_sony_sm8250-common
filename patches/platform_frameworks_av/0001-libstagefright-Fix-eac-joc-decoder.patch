@@ -1,4 +1,4 @@
-From c209e1b2fbdae83efece8f46fa912ba015309664 Mon Sep 17 00:00:00 2001
+From 9732c9aec97231aec4bb02e322db550c53fb7983 Mon Sep 17 00:00:00 2001
 From: ahnet-69 <syedmusicrealise@gmail.com>
 Date: Thu, 29 Aug 2024 05:36:56 +0000
 Subject: [PATCH] libstagefright: Fix eac-joc decoder
@@ -8,7 +8,7 @@ Subject: [PATCH] libstagefright: Fix eac-joc decoder
  1 file changed, 1 insertion(+)
 
 diff --git a/media/libstagefright/omx/SoftOMXPlugin.cpp b/media/libstagefright/omx/SoftOMXPlugin.cpp
-index 7cff386..4e58530 100644
+index 636e02a..9418af5 100644
 --- a/media/libstagefright/omx/SoftOMXPlugin.cpp
 +++ b/media/libstagefright/omx/SoftOMXPlugin.cpp
 @@ -60,6 +60,7 @@ static const kComponent kComponents[] = {
@@ -17,8 +17,8 @@ index 7cff386..4e58530 100644
      { "OMX.dolby.eac3-joc.decoder", "ddpdec", "audio_decoder.eac3_joc" },
 +    { "OMX.dolby.eac3_joc.decoder", "ddpdec", "audio_decoder.eac3_joc" },
      { "OMX.dolby.eac3.decoder", "ddpdec", "audio_decoder.eac3" },
-     { "OMX.dolby.ac4.decoder", "ac4dec", "audio_decoder.ac4" },
  };
+ 
 -- 
 2.43.0
 
