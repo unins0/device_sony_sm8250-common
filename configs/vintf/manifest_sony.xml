@@ -51,4 +51,8 @@
         <transport>hwbinder</transport>
         <fqname>@1.0::ICharger/default</fqname>
     </hal>
+    <hal format="aidl">
+        <name>vendor.semc.hardware.extlight</name>
+        <fqname>IExtLight/default</fqname>
+    </hal>
 </manifest>
