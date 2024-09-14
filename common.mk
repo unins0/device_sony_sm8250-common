@@ -166,7 +166,7 @@ PRODUCT_PACKAGES += \
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light-V1-ndk_platform.vendor \
-    android.hardware.lights-service.sony_edo
+    android.hardware.lights-service-sony
 
 # Media
 PRODUCT_PACKAGES += \
