@@ -1,0 +1,39 @@
+From 85d53b04f963c6450727b1efdb94ef5985268b76 Mon Sep 17 00:00:00 2001
+From: ahnet-69 <syedmusicrealise@gmail.com>
+Date: Mon, 16 Sep 2024 14:58:42 +0500
+Subject: [PATCH] target: Allow building vanilla variants
+
+Change-Id: I32671112c99e1ca183618e7dd45d5828176add41
+---
+ target/product/aospa-target.mk | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/target/product/aospa-target.mk b/target/product/aospa-target.mk
+index 14ece41..a9c88a7 100644
+--- a/target/product/aospa-target.mk
++++ b/target/product/aospa-target.mk
+@@ -56,8 +56,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
+     dalvik.vm.dex2oat64.enabled=true
+ 
+ # Dexpreopt
++ifeq ($(TARGET_BUILD_GAPPS), true)
+ # Don't dexpreopt prebuilts. (For GMS).
+ DONT_DEXPREOPT_PREBUILTS := true
++endif
+ 
+ PRODUCT_DEXPREOPT_SPEED_APPS += \
+     Launcher3QuickStep \
+@@ -91,7 +93,10 @@ PRODUCT_PACKAGES += \
+     vendor.aospa.power-service
+ 
+ # Google - GMS, Pixel, and Mainline Modules
++ifeq ($(TARGET_BUILD_GAPPS), true)
+ $(call inherit-product, vendor/google/gms/config.mk)
++endif
++
+ $(call inherit-product, vendor/google/pixel/config.mk)
+ ifneq ($(TARGET_EXCLUDE_GMODULES), true)
+ $(call inherit-product-if-exists, vendor/google/modules/build/mainline_modules.mk)
+-- 
+2.34.1
+
