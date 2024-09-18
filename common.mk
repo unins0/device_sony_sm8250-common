@@ -20,9 +20,8 @@ $(call inherit-product-if-exists, vendor/sony/extra/extra.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Shipping API level
-BOARD_API_LEVEL := 29
-BOARD_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
-PRODUCT_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
+BOARD_SHIPPING_API_LEVEL := 29
+PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Additional native libraries
 PRODUCT_COPY_FILES += \
