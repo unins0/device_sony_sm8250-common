@@ -95,9 +95,7 @@ PRODUCT_COPY_FILES += \
 
 # Charger
 PRODUCT_PACKAGES += \
-    vendor.semc.hardware.charger@1.0.vendor \
-    vendor.sony.charger \
-    vendor.sony.charger-service
+    vendor.semc.hardware.charger@1.0.vendor
 
 # Configstore
 PRODUCT_PACKAGES += \
