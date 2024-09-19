@@ -127,8 +127,9 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    android.hardware.health@2.1.vendor \
+    android.hardware.health-service.qti \
+    android.hardware.health-service.qti_recovery
 
 # Init
 PRODUCT_PACKAGES += \
@@ -250,7 +251,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     audio \
     av \
     bt \
-    charging \
     display \
     gps \
     init \
