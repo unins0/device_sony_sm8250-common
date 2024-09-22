@@ -91,6 +91,10 @@ function blob_fixup() {
             "${PATCHELF}" --replace-needed "libbinder.so" "libbinder-v32.so" "${2}"
         fi
         ;;
+    vendor/lib*/mediadrm/libwvdrmengine.so |vendor/lib*/libwvhidl.so)
+         [ "$2" = "" ] && return 0
+         grep -q "libcrypto-v33.so" "${2}" || "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "$2"
+        ;;
     esac
 
     return 0
