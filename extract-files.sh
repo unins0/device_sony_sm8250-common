@@ -90,8 +90,13 @@ function blob_fixup() {
         [ "$2" = "" ] && return 0
         "${PATCHELF}" --replace-needed "libutils.so" "libutils-v32.so" "${2}"
         ;;
-    vendor/bin/sensors.qti | vendor/lib*/libwvhidl.so | vendor/lib*/mediadrm/libwvdrmengine.so | vendor/lib*/sensors.ssc.so | vendor/lib64/libsensorcal.so | vendor/lib64/libsnsapi.so | vendor/lib64/libsnsdiaglog.so | vendor/lib64/libssc.so)
+    vendor/bin/sensors.qti | vendor/lib*/sensors.ssc.so | vendor/lib64/libsensorcal.so | vendor/lib64/libsnsapi.so | vendor/lib64/libsnsdiaglog.so | vendor/lib64/libssc.so)
         [ "$2" = "" ] && return 0
+        "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite-3.9.1.so" "libprotobuf-cpp-full-3.9.1.so" "${2}"
+        ;;
+    vendor/lib64/mediadrm/libwvdrmengine.so |vendor/lib64/libwvhidl.so)
+         [ "$2" = "" ] && return 0
+         grep -q "libcrypto-v33.so" "${2}" || "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "$2"
         "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite-3.9.1.so" "libprotobuf-cpp-full-3.9.1.so" "${2}"
         ;;
     esac
