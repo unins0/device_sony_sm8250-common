@@ -166,6 +166,7 @@ PRODUCT_PACKAGES += \
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light-V1-ndk_platform.vendor \
+    android.hardware.light-V1-ndk.vendor \
     android.hardware.lights-service-sony
 
 # Lineage Health
