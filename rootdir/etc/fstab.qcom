@@ -54,3 +54,4 @@ odm                                                     /odm                   e
 /dev/block/bootdevice/by-name/mdm1m9kefs2               /modem_fs2             emmc    defaults                                             defaults
 /dev/block/mmcblk0                                      /sdcard                vfat    nosuid,nodev                                         wait,recoveryonly
 /dev/block/mmcblk0p1                                    /sdcard                vfat    nosuid,nodev                                         wait,recoveryonly
+/dev/block/zram0                                         none                  swap    defaults                                             zramsize=50%
