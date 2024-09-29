@@ -2,14 +2,17 @@
 genfscon sysfs /devices/platform/soc/3d00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpu_available_frequencies u:object_r:vendor_sysfs_kgsl:s0
 
 # Wakeups
+genfscon sysfs /devices/0306_02.01.00/wakeup/wakeup96  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/0306_02.01.00/wakeup/wakeup99  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/0306_02.01.00/wakeup/wakeup117 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/0306_02.01.00/wakeup/wakeup125 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/0.sony,camera_modules/wakeup/wakeup94 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/0.sony,camera_modules/wakeup/wakeup97                          u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1.sony,camera_modules/wakeup/wakeup            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/17300000.qcom,lpass/wakeup/wakeup16 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/188101c.qcom,spss/wakeup/wakeup22 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/1101_00.01.00/wakeup/wakeup45 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup/wakeup99 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup/wakeup120 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup/wakeup125 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup/wakeup129 u:object_r:sysfs_wakeup:s0
