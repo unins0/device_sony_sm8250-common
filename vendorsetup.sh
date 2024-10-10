@@ -56,31 +56,11 @@ case $choice in
         echo -e
         echo 'Done Applying all Patches!'
         echo -e
-        echo 'Checking if problematic FM folder exists...'
-        echo -e
-        if [[ -d vendor/qcom/opensource/commonsys/fm ]]; then
-            echo 'Problematic FM folder found! Removing...'
-            rm -rf vendor/qcom/opensource/commonsys/fm/
-            echo 'Problematic FM successfully removed!'
-            echo -e
-        else
-            echo 'Problematic FM folder not found, skipping removal.'
-            echo -e
-        fi
         echo 'All patches and fixes have been applied! Starting build process...'
         echo -e
         ;;
     2)
         echo "Patches and fixes skipped... Starting build process."
-        if [[ -d vendor/qcom/opensource/commonsys/fm ]]; then
-            echo 'Problematic FM folder found! Removing...'
-            rm -rf vendor/qcom/opensource/commonsys/fm/
-            echo 'Problematic FM successfully removed!'
-            echo -e
-        else
-            echo 'Problematic FM folder not found, skipping removal.'
-            echo -e
-        fi
         ;;
     *)
         echo "Invalid choice! Using option 2 as a fallback."
