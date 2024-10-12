@@ -213,7 +213,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AOSPASonyEdoFrameworksResCommon \
     SonyEdoCarrierConfigResCommon \
-    SonyEdoDeviceAsWebcamOverlay \
     SonyEdoFrameworksResCommon \
     SonyEdoNfcOverlay \
     SonyEdoSettingsProviderOverlayCommon \
@@ -303,9 +302,6 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_engine_sideload \
     update_verifier
-
-# USB
-PRODUCT_HAS_GADGET_HAL := true
 
 # WiFi Display
 PRODUCT_PACKAGES += \
