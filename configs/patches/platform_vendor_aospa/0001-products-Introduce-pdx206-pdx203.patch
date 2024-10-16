@@ -1,86 +1,42 @@
-From 6c3cc889db026a7dad136ce92addfb790ef152fe Mon Sep 17 00:00:00 2001
+From bdfd3d40d44c4488324a2a7daa25066edeb0075a Mon Sep 17 00:00:00 2001
 From: ahnet-69 <syedmusicrealise@gmail.com>
 Date: Wed, 28 Aug 2024 17:26:38 +0000
 Subject: [PATCH] products: Introduce pdx206 & pdx203
 
 ---
- products/AndroidProducts.mk        |  4 +++
- products/pdx203/aospa.dependencies | 38 +++++++++++++++++++++++++
- products/pdx203/aospa_pdx203.mk    | 45 ++++++++++++++++++++++++++++++
- products/pdx206/aospa.dependencies | 38 +++++++++++++++++++++++++
- products/pdx206/aospa_pdx206.mk    | 45 ++++++++++++++++++++++++++++++
- 5 files changed, 170 insertions(+)
- create mode 100644 products/pdx203/aospa.dependencies
+ products/AndroidProducts.mk     |  4 +++
+ products/pdx203/aospa_pdx203.mk | 45 +++++++++++++++++++++++++++++++++
+ products/pdx203/beans.xml       | 11 ++++++++
+ products/pdx206/aospa_pdx206.mk | 45 +++++++++++++++++++++++++++++++++
+ products/pdx206/beans.xml       | 11 ++++++++
+ 5 files changed, 116 insertions(+)
  create mode 100644 products/pdx203/aospa_pdx203.mk
- create mode 100644 products/pdx206/aospa.dependencies
+ create mode 100644 products/pdx203/beans.xml
  create mode 100644 products/pdx206/aospa_pdx206.mk
+ create mode 100644 products/pdx206/beans.xml
 
 diff --git a/products/AndroidProducts.mk b/products/AndroidProducts.mk
-index ad84686..4126417 100644
+index 9d61def..1616d40 100644
 --- a/products/AndroidProducts.mk
 +++ b/products/AndroidProducts.mk
-@@ -48,6 +48,8 @@ PRODUCT_MAKEFILES += \
-     $(LOCAL_DIR)/oneplus9r/aospa_oneplus9r.mk \
-     $(LOCAL_DIR)/oriole/aospa_oriole.mk \
-     $(LOCAL_DIR)/panther/aospa_panther.mk \
+@@ -35,6 +35,8 @@ PRODUCT_MAKEFILES += \
+     $(LOCAL_DIR)/oneplus7t/aospa_oneplus7t.mk \
+     $(LOCAL_DIR)/oneplus7tpro/aospa_oneplus7tpro.mk \
+     $(LOCAL_DIR)/oneplus9/aospa_oneplus9.mk \
 +    $(LOCAL_DIR)/pdx203/aospa_pdx203.mk \
 +    $(LOCAL_DIR)/pdx206/aospa_pdx206.mk \
      $(LOCAL_DIR)/pdx234/aospa_pdx234.mk \
      $(LOCAL_DIR)/phoenix/aospa_phoenix.mk \
      $(LOCAL_DIR)/phone1/aospa_phone1.mk \
-@@ -97,6 +99,8 @@ COMMON_LUNCH_CHOICES += \
-     aospa_oneplus9r-userdebug \
-     aospa_oriole-userdebug \
-     aospa_panther-userdebug \
+@@ -69,6 +71,8 @@ COMMON_LUNCH_CHOICES += \
+     aospa_oneplus7t-userdebug \
+     aospa_oneplus7tpro-userdebug \
+     aospa_oneplus9-userdebug \
 +    aospa_pdx203-userdebug \
 +    aospa_pdx206-userdebug \
      aospa_pdx234-userdebug \
      aospa_phoenix-userdebug \
      aospa_phone1-userdebug \
-diff --git a/products/pdx203/aospa.dependencies b/products/pdx203/aospa.dependencies
-new file mode 100644
-index 0000000..09dd3f6
---- /dev/null
-+++ b/products/pdx203/aospa.dependencies
-@@ -0,0 +1,38 @@
-+[
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_audio",
-+        "target_path":  "vendor/qcom/opensource/audio-hal/primary-hal",
-+        "revision":     "uvite-865"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_display",
-+        "target_path":  "hardware/qcom/display",
-+        "revision":     "uvite-865"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_gps",
-+        "target_path":  "hardware/qcom/gps",
-+        "revision":     "uvite-legacy-component"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_media",
-+        "target_path":  "hardware/qcom/media",
-+        "revision":     "uvite-865"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_vendor_nxp_opensource_halimpl",
-+        "target_path":  "vendor/nxp/opensource/halimpl",
-+        "revision":     "uvite-SN100X-legacy"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_vendor_nxp_opensource_hidlimpl",
-+        "target_path":  "vendor/nxp/opensource/hidlimpl",
-+        "revision":     "uvite-SN100X-legacy"
-+    }
-+]
 diff --git a/products/pdx203/aospa_pdx203.mk b/products/pdx203/aospa_pdx203.mk
 new file mode 100644
 index 0000000..93b38a2
@@ -132,50 +88,23 @@ index 0000000..93b38a2
 +    TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
 +
 +endif
-diff --git a/products/pdx206/aospa.dependencies b/products/pdx206/aospa.dependencies
+diff --git a/products/pdx203/beans.xml b/products/pdx203/beans.xml
 new file mode 100644
-index 0000000..09dd3f6
+index 0000000..942d89e
 --- /dev/null
-+++ b/products/pdx206/aospa.dependencies
-@@ -0,0 +1,38 @@
-+[
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_audio",
-+        "target_path":  "vendor/qcom/opensource/audio-hal/primary-hal",
-+        "revision":     "uvite-865"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_display",
-+        "target_path":  "hardware/qcom/display",
-+        "revision":     "uvite-865"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_gps",
-+        "target_path":  "hardware/qcom/gps",
-+        "revision":     "uvite-legacy-component"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_hardware_qcom_media",
-+        "target_path":  "hardware/qcom/media",
-+        "revision":     "uvite-865"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_vendor_nxp_opensource_halimpl",
-+        "target_path":  "vendor/nxp/opensource/halimpl",
-+        "revision":     "uvite-SN100X-legacy"
-+    },
-+    {
-+        "remote":       "aospa",
-+        "repository":   "AOSPA/android_vendor_nxp_opensource_hidlimpl",
-+        "target_path":  "vendor/nxp/opensource/hidlimpl",
-+        "revision":     "uvite-SN100X-legacy"
-+    }
-+]
++++ b/products/pdx203/beans.xml
+@@ -0,0 +1,11 @@
++<?xml version='1.0' encoding='utf-8'?>
++<!--
++     SPDX-FileCopyrightText: 2024 Paranoid Android
++     SPDX-License-Identifier: Apache-2.0
++-->
++<manifest>
++  <include name="../platforms/kona.xml" />
++
++  <project path="vendor/nxp/opensource/halimpl" name="AOSPA/android_vendor_nxp_opensource_halimpl" remote="aospa" revision="uvite-SN100X-legacy" />
++  <project path="vendor/nxp/opensource/hidlimpl" name="AOSPA/android_vendor_nxp_opensource_hidlimpl" remote="aospa" revision="uvite-SN100X-legacy" />
++</manifest>
 diff --git a/products/pdx206/aospa_pdx206.mk b/products/pdx206/aospa_pdx206.mk
 new file mode 100644
 index 0000000..e3b10fb
@@ -227,6 +156,23 @@ index 0000000..e3b10fb
 +    TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
 +
 +endif
+diff --git a/products/pdx206/beans.xml b/products/pdx206/beans.xml
+new file mode 100644
+index 0000000..942d89e
+--- /dev/null
++++ b/products/pdx206/beans.xml
+@@ -0,0 +1,11 @@
++<?xml version='1.0' encoding='utf-8'?>
++<!--
++     SPDX-FileCopyrightText: 2024 Paranoid Android
++     SPDX-License-Identifier: Apache-2.0
++-->
++<manifest>
++  <include name="../platforms/kona.xml" />
++
++  <project path="vendor/nxp/opensource/halimpl" name="AOSPA/android_vendor_nxp_opensource_halimpl" remote="aospa" revision="uvite-SN100X-legacy" />
++  <project path="vendor/nxp/opensource/hidlimpl" name="AOSPA/android_vendor_nxp_opensource_hidlimpl" remote="aospa" revision="uvite-SN100X-legacy" />
++</manifest>
 -- 
-2.34.1
+2.43.0
 
