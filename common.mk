@@ -338,7 +338,7 @@ TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
 TARGET_SHIPS_SOUND_ENHANCEMENT := true
 
 # Xperia Modules
-$(call inherit-product, hardware/sony/XperiaModules.mk)
+#$(call inherit-product, hardware/sony/XperiaModules.mk)
 
 # Extras
-$(call inherit-product, vendor/sony/extra/extra.mk)
+#$(call inherit-product, vendor/sony/extra/extra.mk)
