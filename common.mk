@@ -13,9 +13,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Inherit from vendor blobs
 $(call inherit-product, vendor/sony/sm8250-common/sm8250-common-vendor.mk)
 
-# Inherit from sony extra stuff
-$(call inherit-product-if-exists, vendor/sony/extra/extra.mk)
-
 # Project ID Quota
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
