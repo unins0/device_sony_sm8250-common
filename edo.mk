@@ -444,6 +444,7 @@ PRODUCT_PACKAGES += \
 # QTI Components
 TARGET_BOARD_PLATFORM := kona
 TARGET_COMMON_QTI_COMPONENTS := \
+    alarm \
     av
 
 # RIL
