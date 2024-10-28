@@ -561,6 +561,7 @@ TARGET_SUPPORTS_EUICC := false
 # Extras - Flags
 TARGET_SHIPS_SONY_CAMERA := true
 TARGET_SHIPS_SONY_APPS := true
+TARGET_SHIPS_SIDESENSE := true
 TARGET_SUPPORTS_GAME_CONTROLLERS := true
 
 # Extras and XperiaModules Combined
