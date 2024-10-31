@@ -83,9 +83,7 @@ vendor/lib64/libqtigef.so
 system_ext/etc/permissions/audiosphere.xml
 system_ext/framework/audiosphere.jar
 vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libdnnrwrapper.so
 vendor/lib/soundfx/libshoebox.so
-vendor/lib/soundfx/libznrwrapper.so
 vendor/lib/libaudiokeymgr.so
 vendor/lib/libHpEqApi.so
 vendor/lib/libOARenderer.so
@@ -99,7 +97,6 @@ vendor/lib/libsnpe_dsp_domains_v2.so
 vendor/lib/libsony3daudioeffect.so
 vendor/lib/libsymphony-cpu.so
 vendor/lib/libvpt3d.so
-vendor/lib/libznr.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
