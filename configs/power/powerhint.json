@@ -185,15 +185,6 @@
       "ResetOnInit": true
     },
     {
-       "Name": "PMQoSCpuDmaLatency",
-       "Path": "/dev/cpu_dma_latency",
-       "Values": [
-           "3d",
-           "100"
-       ],
-       "HoldFd": true
-    },
-    {
       "Name": "CDSchedtuneBoost",
       "Path": "/dev/stune/camera-daemon/schedtune.boost",
       "Values": [
@@ -326,15 +317,6 @@
       "Path": "vendor.powerhal.state",
       "Values": [
         "SUSTAINED_PERFORMANCE",
-        ""
-      ],
-      "Type": "Property"
-    },
-    {
-      "Name": "PowerHALAudioState",
-      "Path": "vendor.powerhal.audio",
-      "Values": [
-        "AUDIO_STREAMING_LOW_LATENCY",
         ""
       ],
       "Type": "Property"
@@ -817,36 +799,6 @@
       "Node": "CPULittleClusterMinFreq",
       "Duration": 1000,
       "Value": "9999999"
-    },
-    {
-       "PowerHint": "AUDIO_LAUNCH",
-       "Node": "CPUBigClusterMinFreq",
-       "Duration": 2000,
-       "Value": "1401600"
-    },
-    {
-       "PowerHint": "AUDIO_LAUNCH",
-       "Node": "CPUBigClusterMaxFreq",
-       "Duration": 2000,
-       "Value": "9999999"
-    },
-    {
-      "PowerHint": "AUDIO_LAUNCH",
-      "Node": "PMQoSCpuDmaLatency",
-      "Duration": 0,
-      "Value": "3d"
-    },
-    {
-      "PowerHint": "AUDIO_STREAMING_LOW_LATENCY",
-      "Node": "PowerHALAudioState",
-      "Duration": 0,
-      "Value": "AUDIO_STREAMING_LOW_LATENCY"
-    },
-    {
-      "PowerHint": "AUDIO_STREAMING_LOW_LATENCY",
-      "Node": "PMQoSCpuDmaLatency",
-      "Duration": 0,
-      "Value": "3d"
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
