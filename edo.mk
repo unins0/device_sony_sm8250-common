@@ -569,3 +569,5 @@ $(call inherit-product, hardware/sony/XperiaModules.mk)
 $(call inherit-product, vendor/sony/extra/extra.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+-include vendor/ahnet-priv/keys/keys.mk
