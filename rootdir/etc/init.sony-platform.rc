@@ -85,8 +85,8 @@ on post-fs
     chown system system /sys/devices/dsi_panel_driver/flm2_mode
 
     # Fingerprint EGIS irq
-    chown system system /dev/esfp0
-    chmod 0600 /dev/esfp0
+    chown system system /dev/fingerprint
+    chmod 0600 /dev/fingerprint
 
     # Fingerprint data folder
     mkdir /data/vendor/egis 0770 system system
