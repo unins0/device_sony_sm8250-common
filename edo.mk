@@ -424,6 +424,8 @@ PRODUCT_PACKAGES += \
     Tag
 
 # Power
+TARGET_PROVIDES_POWERHAL := true
+
 PRODUCT_PACKAGES += \
     libqti-perfd-client \
     android.hardware.power.stats@1.0-service.mock \
