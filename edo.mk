@@ -553,6 +553,7 @@ $(call inherit-product, hardware/sony/XperiaModules.mk)
 
 # Xperia Modules - Flags
 TARGET_SUPPORTS_CREATOR_MODE := true
+TARGET_SUPPORTS_HIGH_POLLING_RATE := true
 TARGET_SUPPORTS_SOUND_ENHANCEMENT_DTS := false
 TARGET_SUPPORTS_EUICC := false
 
