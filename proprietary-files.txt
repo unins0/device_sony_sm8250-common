@@ -132,12 +132,14 @@ vendor/lib64/libvpt3d.so
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
-vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib/libbt-hidlclient.so
 vendor/lib/libbtnv.so
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
+
+# Bluetooth - SOG02 58.2.C.3.127
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|51773a71adce61debab6a4980efef831775184d3
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|55c69bd5155aef769285117e7e86fd5bb6c81d4a
 
 # Bluetooth (A2DP)
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
@@ -660,7 +662,11 @@ system_ext/lib/vendor.qti.hardware.fm@1.0.so
 system_ext/lib64/fm_helium.so
 system_ext/lib64/libfm-hci.so
 system_ext/lib64/vendor.qti.hardware.fm@1.0.so
-vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib/ftm_fm_lib.so
+vendor/lib64/ftm_fm_lib.so
+
+# FM - SOG02 58.2.C.3.127
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so|1c5715fecc783ee664b086b89ba8adbe8524a008
 
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
