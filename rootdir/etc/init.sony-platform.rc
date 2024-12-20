@@ -125,8 +125,8 @@ on boot
     chown root system /config/usb_gadget/g1
 
 on post-fs-data
-    # MPEG-H 3D audio
-    mkdir /data/vendor/3dra 0775 audio audio
+    # 360ra
+    mkdir /data/vendor/360ra 0775 audio audio
 
     #DVS
     chown audioserver audio /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,haptics@c000/activate
