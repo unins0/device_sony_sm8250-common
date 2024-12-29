@@ -40,7 +40,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-yaap
+    $(LOCAL_PATH)/overlay-voltage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
@@ -476,7 +476,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/sony \
     hardware/lineage/interfaces/power-libperfmgr \
-    hardware/qcom-caf/common/libqti-perfd-client \
+    #hardware/qcom-caf/common/libqti-perfd-client \
     hardware/google/pixel \
     hardware/google/interfaces
 
@@ -564,14 +564,14 @@ TARGET_SUPPORTS_EUICC := false
 
 # Extras - Flags
 TARGET_SHIPS_SONY_CAMERA := true
-TARGET_SHIPS_SONY_APPS := true
-TARGET_SHIPS_SIDESENSE := true
+TARGET_SHIPS_SONY_APPS := false
+TARGET_SHIPS_SIDESENSE := false
 TARGET_SHIPS_STAMINA := true
-TARGET_SUPPORTS_GAME_CONTROLLERS := true
+TARGET_SUPPORTS_GAME_CONTROLLERS := false
 
 # Extras and XperiaModules Combined
-TARGET_SUPPORTS_SOUND_ENHANCEMENT := true
-TARGET_SHIPS_SOUND_ENHANCEMENT := true
+TARGET_SUPPORTS_SOUND_ENHANCEMENT := false
+TARGET_SHIPS_SOUND_ENHANCEMENT := false
 
 # Xperia Modules
 $(call inherit-product, hardware/sony/XperiaModules.mk)
@@ -580,6 +580,6 @@ $(call inherit-product, hardware/sony/XperiaModules.mk)
 $(call inherit-product, vendor/sony/extra/extra.mk)
 
 # Keys for signing
--include vendor/ahnet-priv/keys/keys.mk
+-include vendor/voltage-priv/keys/keys.mk
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true

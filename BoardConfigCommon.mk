@@ -51,6 +51,7 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a76
 
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := kona
 TARGET_NO_BOOTLOADER := true
@@ -202,17 +203,16 @@ ENABLE_VENDOR_RIL_SERVICE := true
 VENDOR_SECURITY_PATCH := 2022-10-01
 
 # Sepolicy
-include device/lineage/sepolicy/libperfmgr/sepolicy.mk
+include device/voltage/sepolicy/libperfmgr/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 include hardware/sony/sepolicy/qti/SEPolicy.mk
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
-BOARD_AVB_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_KEY_PATH := vendor/ahnet-priv/keys/avb/custom_rsa4096_private.pem
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 BOARD_AVB_VBMETA_SYSTEM := system system_ext product
-BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := vendor/ahnet-priv/keys/avb/custom_rsa2048_private.pem
-BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
 
