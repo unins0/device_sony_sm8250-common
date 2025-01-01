@@ -153,6 +153,9 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/vintf/manifest.xml
 
+# Media
+TARGET_USES_ION := true
+
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
 
