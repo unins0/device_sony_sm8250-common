@@ -100,6 +100,12 @@ vendor.audio.enable.cirrus.speaker=true
 persist.vendor.audio.fluence.speaker=true
 vendor.voice.path.for.pcm.voip=true
 
+# Audio - Media Vibration
+persist.vendor.audio.latency_media_vibration_speaker=20
+persist.vendor.audio.latency_media_vibration_headset=24
+persist.vendor.audio.latency_media_vibration_usb=0
+persist.vendor.audio.latency_media_vibration_a2dp=0
+
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
 bluetooth.hardware.power.idle_cur_ma=6
