@@ -379,7 +379,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_telephony.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0-service \
     init.qti.media.sh \
     libavservices_minijail_vendor \
     libc2dcolorconvert \
