@@ -206,15 +206,15 @@ vendor.gralloc.disable_ubwc=0
 # Keystore
 ro.hardware.keystore_desede=true
 
+# Media
+debug.stagefright.c2inputsurface=-1
+
 # NFC
 ro.camera.notify_nfc=1
 
 # PASR
 vendor.power.pasr.enabled=true
 vendor.pasr.activemode.enabled=true
-
-# Media Performance Class 11
-ro.odm.build.media_performance_class=30
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
