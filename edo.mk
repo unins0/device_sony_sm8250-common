@@ -43,6 +43,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     CarrierConfigResCommon \
     NcmTetheringOverlay \
+    OpenDeltaResCommon \
     SimDualResCommon \
     SimSingleResCommon \
     SonyEdoFrameworksResCommon \
@@ -51,6 +52,11 @@ PRODUCT_PACKAGES += \
     SonyEdoSystemUIResCommon \
     SonyEdoTelephonyResCommon \
     WifiResCommon
+
+ifneq ($(TARGET_BUILD_GAPPS),true)
+PRODUCT_PACKAGES += \
+    OpenDeltaResCommon-vanilla
+endif
 
 # Permissions
 PRODUCT_COPY_FILES += \

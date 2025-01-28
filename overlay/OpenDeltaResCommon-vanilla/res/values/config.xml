@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <!-- %s is expanded to property_version value. .zip, .delta, .update, .sign extensions added when needed -->
+        <string name="filename_base" formatted="false">YAAP-%s-Vanilla</string>
+
+</resources>
