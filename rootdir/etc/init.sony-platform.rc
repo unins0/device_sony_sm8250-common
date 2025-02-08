@@ -125,6 +125,9 @@ on boot
     chown root system /config/usb_gadget/g1
 
 on post-fs-data
+    # 3dra
+    mkdir /data/vendor/3dra 0775 audio audio
+
     # 360ra
     mkdir /data/vendor/360ra 0775 audio audio
 
