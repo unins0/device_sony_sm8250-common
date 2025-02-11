@@ -67,6 +67,8 @@ system_ext/lib/com.qualcomm.qti.ant@1.0.so
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 
 # Audio Extensions
+vendor/etc/dsx_param_file.bin
+vendor/etc/media_vib/media_vib_params_rev3
 vendor/lib/libhdmipassthru.so
 vendor/lib/libsonydseehxwrapper.so
 vendor/lib64/libhdmipassthru.so
