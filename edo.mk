@@ -54,11 +54,6 @@ PRODUCT_PACKAGES += \
     SonyEdoTelephonyResCommon \
     WifiResCommon
 
-ifneq ($(TARGET_BUILD_GAPPS),true)
-PRODUCT_PACKAGES += \
-    OpenDeltaResCommon-vanilla
-endif
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
