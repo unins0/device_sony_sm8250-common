@@ -103,11 +103,14 @@ vendor/lib/libHpEqApi.so
 vendor/lib/libOARenderer.so
 vendor/lib/libSForceVSE.so
 vendor/lib/libSNPE.so
+vendor/lib/libaudiokeymgr.so
+vendor/lib/libaudiosnpewrapper.so
 vendor/lib/libc++_shared.so
 vendor/lib/libiVptApi.so
 vendor/lib/libiVptHkiDec.so
 vendor/lib/libiVptLibC.so
 vendor/lib/libops.so
+vendor/lib/librebuffering.so
 vendor/lib/libsnpe_dsp_domains_v2.so;DISABLE_CHECKELF
 vendor/lib/libsony3daudioeffect.so
 vendor/lib/libsymphony-cpu.so
@@ -119,8 +122,8 @@ vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
 vendor/lib64/libHpEqApi.so
 vendor/lib64/libOARenderer.so
+vendor/lib64/libaudiokeymgr.so
 vendor/lib64/libSForceVSE.so
-vendor/lib64/libdapparamstorage.so
 vendor/lib64/libiVptApi.so
 vendor/lib64/libiVptHkiDec.so
 vendor/lib64/libiVptLibC.so
