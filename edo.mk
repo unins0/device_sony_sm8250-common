@@ -123,35 +123,25 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.3-impl \
     tinyplay \
-    tinymix \
-    audio_amplifier.qcom
+    tinymix
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default \
-    audio.primary.kona \
     audio.r_submix.default \
     audio.usb.default \
     sound_trigger.primary.kona
 
 PRODUCT_PACKAGES += \
-    liba2dpoffload \
     libaudiopreprocessing \
-    libbatterylistener \
     libbundlewrapper \
-    libcomprcapture \
     libdownmix \
     libdynproc \
     libeffectproxy \
-    libexthwplugin \
-    libhdmiedid \
-    libhfp \
     libldnhncr \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libreverbwrapper \
-    libsndmonitor \
-    libspkrprot \
     libssrec \
     libvisualizer \
     libvolumelistener
