@@ -128,9 +128,6 @@ on post-fs-data
     # 3dra
     mkdir /data/vendor/3dra 0775 audio audio
 
-    # 360ra
-    mkdir /data/vendor/360ra 0775 audio audio
-
     #DVS
     chown audioserver audio /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,haptics@c000/activate
     chmod 0664 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,haptics@c000/activate
