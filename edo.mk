@@ -132,7 +132,6 @@ PRODUCT_PACKAGES += \
     tinyplay
 
 PRODUCT_PACKAGES += \
-    audio.bluetooth.default \
     audio.r_submix.default \
     audio.usb.default \
     sound_trigger.primary.kona \
