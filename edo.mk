@@ -402,8 +402,9 @@ PRODUCT_PACKAGES += \
 TARGET_PROVIDES_POWERHAL := true
 
 PRODUCT_PACKAGES += \
-    libqti-perfd-client \
-    android.hardware.power-service.lineage-libperfmgr
+    android.hardware.power-service.pixel-libperfmgr \
+    android.hardware.power@1.2.vendor \
+    libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -445,7 +446,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/sony \
-    hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/google/pixel \
     hardware/google/interfaces
