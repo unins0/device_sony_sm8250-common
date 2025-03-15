@@ -18,13 +18,6 @@ on boot
     chown system system /sys/devices/virtual/sec/tsp/cmd
 
 # Touch
-on property:vendor.smartstamina.touchreport=1
-    write /sys/devices/virtual/sec/tsp/cmd "stamina_enable,1"
-
-on property:vendor.smartstamina.touchreport=0
-    write /sys/devices/virtual/sec/tsp/cmd "stamina_enable,0"
-
-# Touch
 on property:vendor.backlight_on=1
     write /sys/devices/virtual/sec/tsp/cmd "touch_enable_irq,1"
 
