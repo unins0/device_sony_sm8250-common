@@ -463,10 +463,6 @@ PRODUCT_PACKAGES += \
 # Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.sony
-
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
