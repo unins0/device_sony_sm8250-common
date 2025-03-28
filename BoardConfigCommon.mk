@@ -197,8 +197,8 @@ ENABLE_VENDOR_RIL_SERVICE := true
 VENDOR_SECURITY_PATCH := 2022-10-01
 
 # Sepolicy
-include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
+include hardware/sony/sepolicy/libperfmgr/SEPolicy.mk
 include hardware/sony/sepolicy/qti/SEPolicy.mk
 
 # Verified Boot
