@@ -165,9 +165,6 @@ on post-fs-data
 
     write /sys/class/power_supply/battery/enable_shutdown_at_low_battery 1
 
-    # create directory for wfd
-    mkdir /data/vendor/wfd 0770 system system
-
     # charge power service
     start chg-pwr-service
 
