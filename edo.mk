@@ -47,6 +47,7 @@ PRODUCT_PACKAGES += \
     CarrierConfigResCommon \
     OpenDeltaResCommon \
     SonyEdoFrameworksResCommon \
+    SonyEdoFrameworksResCommon-SS \
     SonyEdoSettingsProviderOverlayCommon \
     SonyEdoSettingsResCommon \
     SonyEdoSystemUIResCommon \
