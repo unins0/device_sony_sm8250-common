@@ -239,7 +239,9 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     gralloc.qcom \
     vendor.qti.hardware.display.allocator-service \
-    vendor.qti.hardware.display.composer-service \
+    vendor.qti.hardware.display.composer-service
+
+$(call soong_config_set,qtidisplay,target_no_raw10_custom_format,true)
 
 # DRM
 PRODUCT_PACKAGES += \
