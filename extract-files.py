@@ -18,6 +18,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
+    'device/sony/sm8250-common',
     'hardware/qcom-caf/sm8250',
     'hardware/qcom-caf/wlan',
     'hardware/sony',
@@ -127,6 +128,11 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/etc/init/init.sony.idd.rc',
     ): blob_fixup()
         .regex_replace(r'writepid.*', 'task_profiles ServiceCapacityLow'),
+    (
+        'vendor/lib64/libsomc_camerahal.so',
+        'vendor/lib64/libsomc_chokoballcmn.so',
+    ): blob_fixup()
+        .replace_needed('libui.so', 'libui-v34.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
