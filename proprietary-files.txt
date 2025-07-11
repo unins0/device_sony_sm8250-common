@@ -1373,6 +1373,7 @@ vendor/firmware/tzwvcpybuf.mdt
 
 # VPP
 vendor/bin/vppservice
+vendor/etc/be_movie_spc
 vendor/etc/init/vppservice.rc
 vendor/lib/libpfter.so
 vendor/lib/libswiqisettinghelper.so
