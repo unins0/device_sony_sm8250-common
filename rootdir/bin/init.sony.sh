@@ -10,7 +10,7 @@ case "$model" in
 esac
 
 # If the model string is empty, it must be a ss JP model
-if [ "$model" == "" ]; then
+if [ "$model" = "" ] || [ "$model" = "XQ-AS42" ] || [ "$model" = "XQ-AT42" ]; then
     setprop vendor.radio.ltalabel.model "JP"
 else
     setprop vendor.radio.ltalabel.model "$model"
