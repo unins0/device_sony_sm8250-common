@@ -75,10 +75,6 @@ BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_DTB_OFFSET := 0x01f00000
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DTBO := true
-TARGET_KERNEL_CONFIG += \
-    vendor/debugfs.config \
-    vendor/kona-perf_defconfig \
-    vendor/edo.config \
 
 # Use External DTC
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
