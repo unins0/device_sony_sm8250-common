@@ -940,6 +940,10 @@ vendor/lib64/liblistensoundmodel2.so
 vendor/lib64/libmulawdec.so
 
 # Media
+system_ext/lib/libmmosal.so
+system_ext/lib/libmmparser_lite.so
+system_ext/lib64/libmmosal.so
+system_ext/lib64/libmmparser_lite.so
 vendor/etc/system_properties.xml
 vendor/lib/libmmosal.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libmmosal.so;MODULE_SUFFIX=_vendor
