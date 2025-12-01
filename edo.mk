@@ -436,9 +436,12 @@ PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink
 
-# XperiaParts
-PRODUCT_PACKAGES += \
-    XperiaParts
+# Xperia Modules
+TARGET_SUPPORTS_BATTERY_CARE):= true
+TARGET_SUPPORTS_CREATOR_MODE := true
+TARGET_SUPPORTS_HIGH_POLLING_RATE := true
+
+$(call inherit-product-if-exists, hardware/sony/XperiaModules.mk)
 
 # Keys for signing
 -include vendor/ahnet-priv/keys/keys.mk
