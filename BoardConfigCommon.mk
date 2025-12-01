@@ -117,18 +117,18 @@ TARGET_NO_RAW10_CUSTOM_FORMAT := true
 TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE := true
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
     hardware/sony/vintf/device_framework_matrix.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/manifest.xml
 
 ODM_MANIFEST_SKUS := ss ds
-ODM_MANIFEST_SS_FILES := $(COMMON_PATH)/manifest_ss.xml
-ODM_MANIFEST_DS_FILES := $(COMMON_PATH)/manifest_ds.xml
+ODM_MANIFEST_SS_FILES := $(COMMON_PATH)/configs/vintf/manifest_ss.xml
+ODM_MANIFEST_DS_FILES := $(COMMON_PATH)/configs/vintf/manifest_ds.xml
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
@@ -160,10 +160,10 @@ TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Properties
-TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
-TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
-TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
-TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
+TARGET_ODM_PROP += $(COMMON_PATH)/configs/properties/odm.prop
+TARGET_PRODUCT_PROP += $(COMMON_PATH)/configs/properties/product.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/configs/properties/system.prop
+TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/properties/vendor.prop
 
 # Recovery
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
