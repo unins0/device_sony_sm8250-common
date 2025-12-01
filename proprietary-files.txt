@@ -98,6 +98,10 @@ vendor/lib64/libqtigef.so
 system_ext/etc/permissions/audiosphere.xml
 system_ext/framework/audiosphere.jar
 vendor/lib/soundfx/libasphere.so
+vendor/lib/soundfx/libbundlewrapper1.so
+vendor/lib/soundfx/libbundlewrapper2.so
+vendor/lib/soundfx/libbundlewrapper3.so
+vendor/lib/soundfx/libbundlewrapper4.so
 vendor/lib/soundfx/libdnnrwrapper.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
@@ -125,6 +129,10 @@ vendor/lib/libvpt3d.so
 vendor/lib/libznr.so;DISABLE_CHECKELF
 vendor/lib/vendor.dolby.hardware.dms@1.0.so
 vendor/lib64/soundfx/libasphere.so
+vendor/lib64/soundfx/libbundlewrapper1.so
+vendor/lib64/soundfx/libbundlewrapper2.so
+vendor/lib64/soundfx/libbundlewrapper3.so
+vendor/lib64/soundfx/libbundlewrapper4.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
