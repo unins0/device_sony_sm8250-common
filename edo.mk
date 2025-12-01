@@ -239,6 +239,14 @@ $(call soong_config_set,EGL,USE_DISPLAY_ARRAY,true)
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
+# Extras
+TARGET_SHIPS_SONY_CAMERA := true
+TARGET_SHIPS_SONY_APPS := true
+TARGET_SHIPS_SOUND_ENHANCEMENT := true
+TARGET_SUPPORTS_GAME_CONTROLLERS := true
+
+$(call inherit-product-if-exists, vendor/sony/extra/extra.mk)
+
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
