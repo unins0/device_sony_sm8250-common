@@ -42,11 +42,16 @@
         <library name="shoebox" path="libshoebox.so"/>
         <!-- library name="znrwrapper" path="libznrwrapper.so"/ -->
         <!-- library name="dnnr" path="libdnnrwrapper.so"/ -->
-        <!-- library name="dap" path="libswdap.so"/ -->
         <library name="bundle1" path="libbundlewrapper1.so"/>
         <library name="bundle2" path="libbundlewrapper2.so"/>
         <library name="bundle3" path="libbundlewrapper3.so"/>
         <library name="bundle4" path="libbundlewrapper4.so"/>
+        <!--DOLBY DAP-->
+        <library name="dap" path="libswdap.so"/>
+        <!--DOLBY GAME-->
+        <library name="gamedap" path="libswgamedap.so"/>
+        <!--DOLBY VQE-->
+        <library name="vqe" path="libswvqe.so"/>
     </libraries>
     <effects>
         <effect name="volume" library="bundle" uuid="119341a0-8469-11df-81f9-0002a5d5c51b"/>
@@ -74,6 +79,12 @@
         <effect name="equalizer2" library="bundle2" uuid="83f23ab9-7966-4e04-87e0-243e6edbaef5"/>
         <effect name="equalizer3" library="bundle3" uuid="d88dd21e-d000-4633-8249-4892935db492"/>
         <effect name="equalizer4" library="bundle4" uuid="5e2452ed-c19e-4b13-92be-fef7a4b7d49f"/>
+        <!--DOLBY DAP-->
+        <effect name="dap" library="dap" uuid="9d4921da-8225-4f29-aefa-39537a04bcaa"/>
+        <!--DOLBY GAME-->
+        <effect name="gamedap" library="gamedap" uuid="3783c334-d3a0-4d13-874f-0032e5fb80e2"/>
+        <!--DOLBY VQE-->
+        <effect name="vqe" library="vqe" uuid="64a0f614-7fa4-48b8-b081-d59dc954616f"/>
     </effects>
     <postprocess>
         <stream type="music">
