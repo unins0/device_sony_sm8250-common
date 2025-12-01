@@ -435,5 +435,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     XperiaParts
 
+# Keys for signing
+-include vendor/ahnet-priv/keys/keys.mk
+
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
