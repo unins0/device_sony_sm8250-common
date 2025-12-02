@@ -16,6 +16,8 @@
 
 BOARD_VENDOR := sony
 
+BUILD_BROKEN_DUP_RULES := true
+
 COMMON_PATH := device/sony/sm8250-common
 
 # A/B
