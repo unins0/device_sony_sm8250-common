@@ -185,6 +185,9 @@ $(call soong_config_set,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
+# Blur
+TARGET_ENABLE_BLUR := true
+
 # Common init scripts
 PRODUCT_PACKAGES += \
     init_thermal.sh \
