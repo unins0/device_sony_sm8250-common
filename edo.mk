@@ -429,6 +429,7 @@ TARGET_SHIPS_XPERIA_DISABLER := true
 TARGET_SUPPORTS_BATTERY_CARE):= true
 TARGET_SUPPORTS_CREATOR_MODE := true
 TARGET_SUPPORTS_HIGH_POLLING_RATE := true
+TARGET_SUPPORTS_MEDIA_VIBRATION := true
 
 $(call inherit-product-if-exists, hardware/sony/XperiaModules.mk)
 
