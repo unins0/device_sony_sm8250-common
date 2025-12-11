@@ -18,6 +18,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
+    'device/sony/sm8250-common',
     'hardware/qcom-caf/sm8250',
     'hardware/qcom-caf/wlan',
     'hardware/sony',
@@ -133,6 +134,10 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/etc/init/init.sony.idd.rc',
     ): blob_fixup()
         .regex_replace(r'writepid.*', 'task_profiles ServiceCapacityLow'),
+    (
+        'vendor/lib64/libdpps.so',
+    ): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
