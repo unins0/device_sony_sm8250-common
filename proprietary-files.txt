@@ -986,7 +986,6 @@ vendor/lib64/unnhal-acc-hvx.so
 vendor/lib64/libpn557_fw.so
 
 # OMX
-vendor/lib/libOmxVideoDSMode.so
 vendor/lib/libOmxVpp.so
 vendor/lib64/libOmxVpp.so
 
