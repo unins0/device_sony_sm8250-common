@@ -428,13 +428,6 @@ PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink
 
-# Dex to make OTA go faster
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    dalvik.vm.boot-dex2oat-cpu-set=1,2,3,4,5,6,7 \
-    dalvik.vm.boot-dex2oat-threads=7 \
-    dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7 \
-    dalvik.vm.image-dex2oat-threads=8
-
 # Xperia Modules
 TARGET_SHIPS_XPERIA_DISABLER := true
 TARGET_SUPPORTS_BATTERY_CARE):= true
