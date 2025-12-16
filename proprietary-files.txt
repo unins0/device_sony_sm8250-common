@@ -943,7 +943,6 @@ vendor/lib64/libmulawdec.so
 # Media
 system_ext/lib64/libmmosal.so
 system_ext/lib64/libmmparser_lite.so
-vendor/etc/system_properties.xml
 vendor/lib/libmmosal.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libmmosal.so;MODULE_SUFFIX=_vendor
 
@@ -984,10 +983,6 @@ vendor/lib64/unnhal-acc-hvx.so
 
 # NFC Firmware
 vendor/lib64/libpn557_fw.so
-
-# OMX
-vendor/lib/libOmxVpp.so
-vendor/lib64/libOmxVpp.so
 
 # Peripheral manager
 vendor/bin/pm-proxy

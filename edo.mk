@@ -37,13 +37,14 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-voltage
+    $(LOCAL_PATH)/overlay-yaap
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     DisplayFeaturesResCommon \
     CarrierConfigResCommon \
     NcmTetheringOverlay \
+    OpenDeltaResCommon \
     SimDualResCommon \
     SimSingleResCommon \
     SonyEdoFrameworksResCommon \
@@ -52,6 +53,11 @@ PRODUCT_PACKAGES += \
     SonyEdoSystemUIResCommon \
     SonyEdoTelephonyResCommon \
     WifiResCommon
+
+ifneq ($(TARGET_BUILD_GAPPS),true)
+PRODUCT_PACKAGES += \
+    OpenDeltaResCommon-vanilla
+endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -103,7 +109,7 @@ PRODUCT_COPY_FILES += \
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
+    FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -176,11 +182,6 @@ $(call soong_config_set,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
-# Cgroup and task_profiles
-PRODUCT_COPY_FILES += \
-    system/core/libprocessgroup/profiles/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
-    system/core/libprocessgroup/profiles/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
-
 # Common init scripts
 PRODUCT_PACKAGES += \
     init_thermal.sh \
@@ -196,7 +197,6 @@ PRODUCT_PACKAGES += \
     init.qti.ufs.rc \
     init.qti.chg_policy.sh \
     init.qti.dcvs.sh \
-    init.qti.media.sh \
     init.qti.qcv.sh \
     init.recovery.qcom.rc \
     init.target.rc \
@@ -209,6 +209,10 @@ PRODUCT_PACKAGES += \
     init.sony-device-common.rc \
     init.sony-platform.rc \
     init.sony.rc
+
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
 
 # DebugFS
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
@@ -234,9 +238,9 @@ PRODUCT_PACKAGES += \
 
 # Extras
 TARGET_SHIPS_SONY_CAMERA := true
-TARGET_SHIPS_SONY_APPS := false
-TARGET_SHIPS_SOUND_ENHANCEMENT := false
-TARGET_SUPPORTS_GAME_CONTROLLERS := false
+TARGET_SHIPS_SONY_APPS := true
+TARGET_SHIPS_SOUND_ENHANCEMENT := true
+TARGET_SUPPORTS_GAME_CONTROLLERS := true
 
 $(call inherit-product-if-exists, vendor/sony/extra/extra.mk)
 
@@ -272,9 +276,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl
 
-# ION
-$(call soong_config_set_bool,libion,legacy_impl,true)
-
 #  IPACM
 PRODUCT_PACKAGES += \
     ipacm \
@@ -282,20 +283,21 @@ PRODUCT_PACKAGES += \
     libipanat \
     liboffloadhal
 
+# Kernel
+PRODUCT_ENABLE_UFFD_GC := true
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_performance_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_c2.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs_kona_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_kona.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs_performance_kona_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_kona.xml \
-    $(LOCAL_PATH)/configs/media/video_system_specs.json:$(TARGET_COPY_OUT_VENDOR)/etc/video_system_specs.json
+    $(LOCAL_PATH)/configs/media/media_codecs_performance_kona_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_kona.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles_kona.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_kona.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_ODM)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
-$(call soong_config_set_bool,stagefright,target_disable_thumbnail_block_model,true)
+$(call soong_config_set,stagefright,target_disables_thumbnail_block_model,true)
 
 # Light
 PRODUCT_PACKAGES += \
@@ -313,13 +315,6 @@ PRODUCT_PACKAGES += \
     SecureElement \
     Tag
 
-# OMX
-PRODUCT_PACKAGES += \
-    libOmxCore \
-    libOmxVdec \
-    libOmxVenc \
-    libstagefrighthw
-
 # Partitions
 PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
@@ -328,11 +323,19 @@ PRODUCT_PACKAGES += \
 
 # Power
 TARGET_PROVIDES_POWERHAL := true
-$(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libpowermode-ext-sony)
 
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
+    android.hardware.power-service.pixel-libperfmgr \
     libqti-perfd-client
+
+# sendhint utility
+PRODUCT_PACKAGES += \
+    sendhint
+
+# Enable adpf cpu hint session for SurfaceFlinger and HWUI
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    debug.sf.enable_adpf_cpu_hint=true \
+    debug.hwui.use_hint_manager=true
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -341,11 +344,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti.vendor # Needed by CNE app
 
+
+# QTI Components
+TARGET_BOARD_PLATFORM := kona
+TARGET_COMMON_QTI_COMPONENTS := \
+    alarm
+
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio-service.compat \
-    extphonelib \
-    extphonelib.xml
+    android.hardware.radio-service.compat
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -354,8 +361,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
-    hardware/google/pixel/power-libperfmgr \
-    hardware/lineage/interfaces/power-libperfmgr \
+    hardware/google/pixel \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/sony
 
@@ -366,22 +372,6 @@ PRODUCT_PACKAGES += \
 
 # Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Telephony
-PRODUCT_PACKAGES += \
-    ims-ext-common \
-    ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml \
-    qti-telephony-utils \
-    qti_telephony_utils.xml \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti.xml
 
 # Update engine
 PRODUCT_PACKAGES += \
@@ -429,13 +419,23 @@ PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink
 
+# Dex to make OTA go faster
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    dalvik.vm.boot-dex2oat-cpu-set=1,2,3,4,5,6,7 \
+    dalvik.vm.boot-dex2oat-threads=7 \
+    dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7 \
+    dalvik.vm.image-dex2oat-threads=8
+
 # Xperia Modules
 TARGET_SHIPS_XPERIA_DISABLER := true
-TARGET_SUPPORTS_BATT_CARE := true
+TARGET_SUPPORTS_BATTERY_CARE):= true
 TARGET_SUPPORTS_CREATOR_MODE := true
 TARGET_SUPPORTS_HIGH_POLLING_RATE := true
-TARGET_SUPPORTS_MEDIA_VIBRATION := false
+TARGET_SUPPORTS_MEDIA_VIBRATION := true
 
 $(call inherit-product-if-exists, hardware/sony/XperiaModules.mk)
+
+# Keys for signing
+-include vendor/ahnet-priv/keys/keys.mk
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
