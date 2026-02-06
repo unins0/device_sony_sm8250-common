@@ -436,7 +436,4 @@ TARGET_SUPPORTS_MEDIA_VIBRATION := true
 
 $(call inherit-product-if-exists, hardware/sony/XperiaModules.mk)
 
-# Keys for signing
--include vendor/ahnet-priv/keys/keys.mk
-
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
