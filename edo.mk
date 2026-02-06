@@ -171,7 +171,7 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
     android.hardware.boot-service.qti.recovery
 
-$(call soong_config_set_bool,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
+$(call soong_config_set,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -440,8 +440,5 @@ TARGET_SUPPORTS_HIGH_POLLING_RATE := true
 TARGET_SUPPORTS_MEDIA_VIBRATION := true
 
 $(call inherit-product-if-exists, hardware/sony/XperiaModules.mk)
-
-# Keys for signing
--include vendor/ahnet-priv/keys/keys.mk
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
