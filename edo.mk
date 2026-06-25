@@ -210,10 +210,6 @@ PRODUCT_PACKAGES += \
     init.sony-platform.rc \
     init.sony.rc
 
-# Configstore
-PRODUCT_PACKAGES += \
-    disable_configstore
-
 # DebugFS
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
