@@ -189,7 +189,7 @@ VENDOR_SECURITY_PATCH := 2022-10-01
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
-include hardware/sony/sepolicy/libperfmgr/SEPolicy.mk
+include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 include hardware/sony/sepolicy/qti/SEPolicy.mk
 
 # Verified Boot

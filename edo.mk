@@ -327,18 +327,12 @@ PRODUCT_PACKAGES += \
     vendor_firmware_mnt_mountpoint
 
 # Power
+TARGET_PROVIDES_POWERHAL := true
+$(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libpowermode-ext-sony)
+
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.pixel-libperfmgr \
+    android.hardware.power-service.lineage-libperfmgr \
     libqti-perfd-client
-
-# sendhint utility
-PRODUCT_PACKAGES += \
-    sendhint
-
-# Enable adpf cpu hint session for SurfaceFlinger and HWUI
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    debug.sf.enable_adpf_cpu_hint=true \
-    debug.hwui.use_hint_manager=true
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -360,7 +354,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
-    hardware/google/pixel \
+    hardware/google/pixel/power-libperfmgr \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/sony
 
