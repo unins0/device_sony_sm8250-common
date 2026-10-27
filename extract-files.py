@@ -137,7 +137,7 @@ blob_fixups: blob_fixups_user_type = {
     (
         'vendor/lib64/libdpps.so',
     ): blob_fixup()
-        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+        .replace_needed('libtinyxml2.so', 'libtinyxml2_1.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
