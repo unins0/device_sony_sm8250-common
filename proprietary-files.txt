@@ -69,9 +69,7 @@ system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 # Audio Extensions
 vendor/etc/dsx_param_file.bin
 vendor/lib/libhdmipassthru.so
-vendor/lib/libsonydseehxwrapper.so
 vendor/lib64/libhdmipassthru.so
-vendor/lib64/libsonydseehxwrapper.so
 
 # Audio Firmware
 system_ext/lib/vendor.qti.hardware.audiohalext@1.0.so
@@ -115,20 +113,13 @@ vendor/lib64/hw/audio.primary.kona.so
 # Audio FX Modules
 system_ext/etc/permissions/audiosphere.xml
 system_ext/framework/audiosphere.jar
-vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libbundlewrapper1.so
-vendor/lib/soundfx/libbundlewrapper2.so
-vendor/lib/soundfx/libbundlewrapper3.so
-vendor/lib/soundfx/libbundlewrapper4.so
 vendor/lib/soundfx/libdnnrwrapper.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
-vendor/lib/soundfx/libshoebox.so
 vendor/lib/soundfx/libznrwrapper.so;FIX_SONAME
 vendor/lib/libHpEqApi.so
 vendor/lib/libOARenderer.so
-vendor/lib/libSForceVSE.so
 vendor/lib/libSNPE.so
 vendor/lib/libaudiokeymgr.so
 vendor/lib/libc++_shared.so
@@ -138,29 +129,20 @@ vendor/lib/libiVptLibC.so
 vendor/lib/libops.so
 vendor/lib/librebuffering.so
 vendor/lib/libsnpe_dsp_domains_v2.so;DISABLE_CHECKELF
-vendor/lib/libsony3daudioeffect.so
 vendor/lib/libsymphony-cpu.so
 vendor/lib/libvpt3d.so
 vendor/lib/libznr.so;DISABLE_CHECKELF
-vendor/lib64/soundfx/libasphere.so
-vendor/lib64/soundfx/libbundlewrapper1.so
-vendor/lib64/soundfx/libbundlewrapper2.so
-vendor/lib64/soundfx/libbundlewrapper3.so
-vendor/lib64/soundfx/libbundlewrapper4.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
-vendor/lib64/soundfx/libshoebox.so
 vendor/lib64/libHpEqApi.so
 vendor/lib64/libOARenderer.so
-vendor/lib64/libSForceVSE.so
 vendor/lib64/libaudiokeymgr.so
 vendor/lib64/libiVptApi.so
 vendor/lib64/libiVptHkiDec.so
 vendor/lib64/libiVptLibC.so
 vendor/lib64/libops.so
 vendor/lib64/librebuffering.so
-vendor/lib64/libsony3daudioeffect.so
 vendor/lib64/libvpt3d.so
 
 # Bluetooth
