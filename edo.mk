@@ -335,6 +335,7 @@ $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libp
 
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
+    libperfmgr.vendor \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
