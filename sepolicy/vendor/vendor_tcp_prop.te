@@ -1,0 +1,11 @@
+# Voltage: manual TCP tuning props (Settings -> Developer options -> Networking).
+# vendor_public_prop: read by both system_app (UI state) and vendor_somc_tcp_ca.
+# system_app is attributed to system_writes_vendor_properties_violators because
+# compatible_property builds neverallow coredomain -> vendor property_service
+# set; runtime access stays limited to the explicit set_prop below.
+vendor_public_prop(vendor_tcp_prop)
+typeattribute system_app system_writes_vendor_properties_violators;
+
+get_prop(system_app, vendor_tcp_prop)
+set_prop(system_app, vendor_tcp_prop)
+get_prop(vendor_somc_tcp_ca, vendor_tcp_prop)

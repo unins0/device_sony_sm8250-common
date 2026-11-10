@@ -1,0 +1,2 @@
+# Voltage: native TCP Optimiser — per-transport TCP congestion control.
+/(vendor|system/vendor)/bin/vendor\.somc\.tcp_ca\.sh  u:object_r:vendor_somc_tcp_ca_exec:s0

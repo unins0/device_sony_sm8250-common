@@ -1,0 +1,15 @@
+# Voltage: native TCP Optimiser: per-transport TCP congestion control.
+# Runs /vendor/bin/vendor.somc.tcp_ca.sh (details and the
+# persist.vendor.tcp.* overrides in the script header). 'disabled' plus an
+# explicit trigger instead of plain class late_start auto-start: at
+# class_start late_start time neither wlan nor rmnet have settled, and the
+# first poll would race early interface flaps.
+service vendor.somc.tcp_ca /vendor/bin/vendor.somc.tcp_ca.sh
+    class late_start
+    user root
+    group root
+    capabilities NET_ADMIN
+    disabled
+
+on property:sys.boot_completed=1
+    start vendor.somc.tcp_ca

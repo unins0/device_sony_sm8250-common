@@ -195,6 +195,9 @@ include device/qcom/sepolicy_vndr/SEPolicy.mk
 include hardware/sony/sepolicy/libperfmgr/SEPolicy.mk
 include hardware/sony/sepolicy/qti/SEPolicy.mk
 
+# Voltage: native TCP Optimiser (vendor.somc.tcp_ca)
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_ALGORITHM := SHA256_RSA4096

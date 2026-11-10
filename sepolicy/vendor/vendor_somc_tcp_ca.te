@@ -1,0 +1,26 @@
+# Voltage: native TCP Optimiser: per-transport TCP congestion control.
+# Polls the default route (/proc/net/*route, operstate fallback), switches
+# the default CC (bbr/westwood), applies the sysctl tuning and honors the
+# persist.vendor.tcp.* overrides.
+type vendor_somc_tcp_ca, domain;
+type vendor_somc_tcp_ca_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(vendor_somc_tcp_ca)
+
+# #!/vendor/bin/sh interpreter for the script.
+allow vendor_somc_tcp_ca vendor_shell_exec:file rx_file_perms;
+
+# Hardcoded vendor tools (sysctl, getprop, log) via the
+# /vendor/bin/<applet> symlinks to toybox_vendor / toolbox, executed
+# without a domain transition.
+allow vendor_somc_tcp_ca vendor_toolbox_exec:file execute_no_trans;
+
+# sysctl reads/writes under /proc/sys/net/* (default congestion control,
+# socket buffer tuning, tcp_available_congestion_control probe) and the
+# /proc/net/route + /proc/net/ipv6_route default-route dumps.
+allow vendor_somc_tcp_ca proc_net:file rw_file_perms;
+
+# Fallback transport detection: /sys/class/net/*/operstate scan (the
+# usual path on Android, where per-network defaults stay in private
+# tables).
+r_dir_file(vendor_somc_tcp_ca, sysfs_net)

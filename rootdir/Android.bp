@@ -67,6 +67,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "vendor.somc.tcp_ca.rc",
+    src: "etc/vendor.somc.tcp_ca.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "texfat.rc",
     src: "etc/texfat.rc",
     sub_dir: "init",
@@ -152,4 +159,10 @@ sh_binary {
     name: "init.qcom.msim.sh",
     src: "bin/init.qcom.msim.sh",
     device_specific: true,
+}
+
+sh_binary {
+    name: "vendor.somc.tcp_ca.sh",
+    src: "bin/vendor.somc.tcp_ca.sh",
+    vendor: true,
 }

@@ -1,0 +1,2 @@
+# Voltage: manual TCP tuning overrides (Developer options).
+persist.vendor.tcp. u:object_r:vendor_tcp_prop:s0

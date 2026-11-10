@@ -208,7 +208,9 @@ PRODUCT_PACKAGES += \
     init.sony-device-common.rc \
     init.sony-platform.rc \
     init.sony.rc \
-    vendor.somc.dolby-c2-bootdelay.rc
+    vendor.somc.dolby-c2-bootdelay.rc \
+    vendor.somc.tcp_ca.rc \
+    vendor.somc.tcp_ca.sh
 
 # Configstore
 PRODUCT_PACKAGES += \
