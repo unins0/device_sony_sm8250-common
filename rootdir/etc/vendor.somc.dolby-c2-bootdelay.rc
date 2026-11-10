@@ -11,6 +11,14 @@
 # 'override' + 'disabled': class_start hal skips it (init StartIfNotDisabled()),
 # and the explicit trigger below starts it once sys.boot_completed=1.
 #
+# 'class hal' is deliberately NOT carried over the stock declaration:
+# vndservicemanager.rc has 'onrestart class_restart hal' WITHOUT the
+# --only-enabled flag, and Service::Restart() -> Start() clears SVC_DISABLED,
+# so an early vndservicemanager restart before boot_completed could start this
+# service ahead of the trigger. Out of the hal class the service is unreachable
+# from class_start/class_restart, while init's normal crash-restart (Reap()) and
+# the explicit trigger still work as intended.
+#
 # /vendor/etc/init/*.rc files are imported alphabetically (Parser::ParseConfigDir
 # std::sort) and init honours the LAST declaration of a service that carries the
 # 'override' option (ServiceParser::EndSection removes the earlier one), so this
@@ -19,7 +27,6 @@
 service vendor-dolby-media-c2-hal-1-0 /vendor/bin/hw/vendor.dolby.media.c2@1.0-service
     override
     disabled
-    class hal
     user mediacodec
     group camera mediadrm drmrpc
     ioprio rt 4
