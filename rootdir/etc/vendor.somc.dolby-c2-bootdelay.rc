@@ -1,0 +1,29 @@
+# Voltage: postpone the Dolby Media C2 HAL start until boot has completed.
+#
+# The stock declaration lives in the Sony blobs
+# (vendor/sony/extra/audio/proprietary/vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc,
+# installed as /vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc) and has no
+# 'disabled' attribute, so init's "on boot" class_start hal launches it in the
+# middle of early codec scanning. On a fresh flash the binary dies with SIGSEGV
+# there almost every boot, and system_server cascade-restarts if it hits the
+# dead window. Same binary, same user/group/ioprio/writepid, no seclabel (the
+# SELinux domain is derived from the binary path and does not change), plus
+# 'override' + 'disabled': class_start hal skips it (init StartIfNotDisabled()),
+# and the explicit trigger below starts it once sys.boot_completed=1.
+#
+# /vendor/etc/init/*.rc files are imported alphabetically (Parser::ParseConfigDir
+# std::sort) and init honours the LAST declaration of a service that carries the
+# 'override' option (ServiceParser::EndSection removes the earlier one), so this
+# file must sort after vendor.dolby.media.c2@1.0-service.rc.
+
+service vendor-dolby-media-c2-hal-1-0 /vendor/bin/hw/vendor.dolby.media.c2@1.0-service
+    override
+    disabled
+    class hal
+    user mediacodec
+    group camera mediadrm drmrpc
+    ioprio rt 4
+    writepid /dev/cpuset/foreground/tasks
+
+on property:sys.boot_completed=1
+    start vendor-dolby-media-c2-hal-1-0

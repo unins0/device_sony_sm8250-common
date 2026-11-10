@@ -207,7 +207,8 @@ PRODUCT_PACKAGES += \
     init.nfc.rc \
     init.sony-device-common.rc \
     init.sony-platform.rc \
-    init.sony.rc
+    init.sony.rc \
+    vendor.somc.dolby-c2-bootdelay.rc
 
 # Configstore
 PRODUCT_PACKAGES += \

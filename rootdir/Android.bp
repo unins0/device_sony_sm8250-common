@@ -60,6 +60,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "vendor.somc.dolby-c2-bootdelay.rc",
+    src: "etc/vendor.somc.dolby-c2-bootdelay.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "texfat.rc",
     src: "etc/texfat.rc",
     sub_dir: "init",
