@@ -21,7 +21,6 @@ persist.vendor.audio.latency_deep_buffer_a2dp=0
 persist.vendor.audio.latency_compress_offload_speaker=-20
 persist.vendor.audio.latency_compress_offload_headset=-20
 persist.vendor.audio.latency_compress_offload_usb=-48
-persist.vendor.audio.latency_compress_offload_a2dp=220
 persist.vendor.audio.latency_media_vibration_speaker=20
 persist.vendor.audio.latency_media_vibration_headset=24
 persist.vendor.audio.latency_media_vibration_usb=0
@@ -130,12 +129,11 @@ persist.bluetooth.a2dp_offload.disabled=true
 persist.bluetooth.sbc_hd.enabled=true
 persist.vendor.bt.aac_frm_ctl.enabled=true
 persist.vendor.bt.aac_vbr_frm_ctl.enabled=true
-persist.vendor.qcom.bluetooth.a2dp_offload_cap=aac-aptx-aptxhd-ldac
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
 vendor.qcom.bluetooth.soc=hastings
 persist.vendor.qcom.bluetooth.soc=hastings
 ro.vendor.bluetooth.wipower=false
-ro.bluetooth.a2dp_offload.supported=true
+ro.bluetooth.a2dp_offload.supported=false
 ro.vendor.bt.bdaddr_path=/data/vendor/etc/bluetooth_bdaddr
 
 # Camera
