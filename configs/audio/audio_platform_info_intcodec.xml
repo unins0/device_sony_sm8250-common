@@ -176,7 +176,6 @@
         <device name="SND_DEVICE_OUT_SONY_MEDIA_VIBRATOR_A2DP" acdb_id="901"/>
         <device name="SND_DEVICE_OUT_SONY_MEDIA_HAPTICS_SPEAKER" acdb_id="900"/>
         <device name="SND_DEVICE_OUT_SONY_MEDIA_HAPTICS_HEADPHONES" acdb_id="900"/>
-        <device name="SND_DEVICE_OUT_SONY_MEDIA_HAPTICS_USB_HEADPHONES" acdb_id="900"/>
         <device name="SND_DEVICE_OUT_SONY_MEDIA_HAPTICS_A2DP" acdb_id="901"/>
         <device name="SND_DEVICE_IN_SONY_MONO_MIC" acdb_id="11"/>
         <device name="SND_DEVICE_IN_SONY_HANDSET_MIC_ASR" acdb_id="528"/>
